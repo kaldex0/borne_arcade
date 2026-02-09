@@ -1,0 +1,14 @@
+[Unit]
+Description=Borne Arcade
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/git/borne_arcade
+ExecStart=/home/pi/git/borne_arcade/lancerBorne.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical.target

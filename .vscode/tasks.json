@@ -1,0 +1,34 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Docs: Generate",
+      "type": "shell",
+      "command": "",
+      "args": [],
+      "problemMatcher": [],
+      "group": "build",
+      "windows": {
+        "command": "powershell",
+        "args": [
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "${workspaceFolder}\\scripts\\generate_docs.ps1"
+        ]
+      },
+      "linux": {
+        "command": "bash",
+        "args": [
+          "${workspaceFolder}/scripts/generate_docs.sh"
+        ]
+      },
+      "osx": {
+        "command": "bash",
+        "args": [
+          "${workspaceFolder}/scripts/generate_docs.sh"
+        ]
+      }
+    }
+  ]
+}

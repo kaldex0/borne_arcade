@@ -1,0 +1,4 @@
+Esquivez les bombes rouges
+Attrapez les étoiles jaunes
+Récupérez les boucliers bleus
+Plus le score monte, plus ça va vite !
