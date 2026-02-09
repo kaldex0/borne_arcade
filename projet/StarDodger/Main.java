@@ -26,12 +26,15 @@ public class Main {
 
     private final ArrayList<Cercle> stars = new ArrayList<>();
     private final ArrayList<Integer> starSpeed = new ArrayList<>();
+    private final ArrayList<Integer> starY = new ArrayList<>();
 
     private final ArrayList<Cercle> bombs = new ArrayList<>();
     private final ArrayList<Integer> bombSpeed = new ArrayList<>();
+    private final ArrayList<Integer> bombY = new ArrayList<>();
 
     private final ArrayList<Cercle> shields = new ArrayList<>();
     private final ArrayList<Integer> shieldSpeed = new ArrayList<>();
+    private final ArrayList<Integer> shieldY = new ArrayList<>();
 
     private int score = 0;
     private int level = 1;
@@ -107,7 +110,7 @@ public class Main {
     private void initPlayer() {
         int x1 = (WIDTH - PLAYER_SIZE) / 2;
         int y1 = 120;
-        player = new Rectangle(Couleur.BLEU_CLAIR, new Point(x1, y1), new Point(x1 + PLAYER_SIZE, y1 + PLAYER_SIZE), true);
+        player = new Rectangle(Couleur.BLEU, new Point(x1, y1), new Point(x1 + PLAYER_SIZE, y1 + PLAYER_SIZE), true);
         f.ajouter(player);
     }
 
@@ -143,10 +146,13 @@ public class Main {
         }
         stars.clear();
         starSpeed.clear();
+        starY.clear();
         bombs.clear();
         bombSpeed.clear();
+        bombY.clear();
         shields.clear();
         shieldSpeed.clear();
+        shieldY.clear();
     }
 
     private void updateHud() {
@@ -162,6 +168,7 @@ public class Main {
         Cercle star = new Cercle(Couleur.JAUNE, new Point(x, y), r, true);
         stars.add(star);
         starSpeed.add(3 + level);
+        starY.add(y);
         f.ajouter(star);
     }
 
@@ -172,6 +179,7 @@ public class Main {
         Cercle bomb = new Cercle(Couleur.ROUGE, new Point(x, y), r, true);
         bombs.add(bomb);
         bombSpeed.add(4 + level);
+        bombY.add(y);
         f.ajouter(bomb);
     }
 
@@ -179,20 +187,24 @@ public class Main {
         int x = 40 + rng.nextInt(WIDTH - 80);
         int y = HEIGHT + 30;
         int r = 18;
-        Cercle shield = new Cercle(Couleur.CYAN, new Point(x, y), r, true);
+        Cercle shield = new Cercle(Couleur.VERT, new Point(x, y), r, true);
         shields.add(shield);
         shieldSpeed.add(3 + level);
+        shieldY.add(y);
         f.ajouter(shield);
     }
 
     private void updateEntities() {
         for (int i = stars.size() - 1; i >= 0; i--) {
             Cercle c = stars.get(i);
+            int newY = starY.get(i) - starSpeed.get(i);
+            starY.set(i, newY);
             c.translater(0, -starSpeed.get(i));
-            if (c.getCentre().getY() < -40) {
+            if (newY < -40) {
                 f.supprimer(c);
                 stars.remove(i);
                 starSpeed.remove(i);
+                starY.remove(i);
                 score += 1;
                 if (score % 15 == 0) {
                     level++;
@@ -201,6 +213,7 @@ public class Main {
                 f.supprimer(c);
                 stars.remove(i);
                 starSpeed.remove(i);
+                starY.remove(i);
                 score += 5;
                 if (score % 15 == 0) {
                     level++;
@@ -210,15 +223,19 @@ public class Main {
 
         for (int i = bombs.size() - 1; i >= 0; i--) {
             Cercle c = bombs.get(i);
+            int newY = bombY.get(i) - bombSpeed.get(i);
+            bombY.set(i, newY);
             c.translater(0, -bombSpeed.get(i));
-            if (c.getCentre().getY() < -40) {
+            if (newY < -40) {
                 f.supprimer(c);
                 bombs.remove(i);
                 bombSpeed.remove(i);
+                bombY.remove(i);
             } else if (c.intersectionRapide(player)) {
                 f.supprimer(c);
                 bombs.remove(i);
                 bombSpeed.remove(i);
+                bombY.remove(i);
                 if (shieldActive) {
                     shieldActive = false;
                 } else {
@@ -229,15 +246,19 @@ public class Main {
 
         for (int i = shields.size() - 1; i >= 0; i--) {
             Cercle c = shields.get(i);
+            int newY = shieldY.get(i) - shieldSpeed.get(i);
+            shieldY.set(i, newY);
             c.translater(0, -shieldSpeed.get(i));
-            if (c.getCentre().getY() < -40) {
+            if (newY < -40) {
                 f.supprimer(c);
                 shields.remove(i);
                 shieldSpeed.remove(i);
+                shieldY.remove(i);
             } else if (c.intersectionRapide(player)) {
                 f.supprimer(c);
                 shields.remove(i);
                 shieldSpeed.remove(i);
+                shieldY.remove(i);
                 shieldActive = true;
             }
         }
