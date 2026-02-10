@@ -89,11 +89,11 @@ public class BoiteDescription extends Boite{
 	highscore = new Texte(Couleur.NOIR, "HIGHSCORE", font3, new Point(960, 335));
 	listeHighScore = new Texte[10];
 	for(int i=0;i<5;i++){
-	    listeHighScore[i] = new Texte(Couleur.NOIR, "", font4, new Point(820,310));
+	    listeHighScore[i] = new Texte(new Couleur(0, 0, 0), "", font4, new Point(820,310));
 	    listeHighScore[i].translater(0,-i*25);
 	}
 	for(int i=5;i<10;i++){
-	    listeHighScore[i] = new Texte(Couleur.NOIR, "", font4, new Point(1100,310));
+	    listeHighScore[i] = new Texte(new Couleur(0, 0, 0), "", font4, new Point(1100,310));
 	    listeHighScore[i].translater(0,-(i-5)*25);
 	}
 	
