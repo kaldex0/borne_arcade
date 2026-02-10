@@ -32,10 +32,10 @@ public class Pointeur {
 		e.printStackTrace();
 	    } catch(Exception e){	//on catche toutes les exceptions, nécessaire pour le waitFor()
 			e.printStackTrace();
-		}
-
-	return value;
+	    }
     }
+
+    public int getValue() {
 
     public void setValue(int value) {
 	this.value = value;
