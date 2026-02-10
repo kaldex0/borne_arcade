@@ -201,7 +201,10 @@ public class Graphique {
 			}
 			
 			if(!fermetureMenu){
-				if(bs.selection(clavier)){
+				boolean selectionResult = bs.selection(clavier);
+				System.out.println("bs.selection returned: " + selectionResult);
+				if(selectionResult){
+					System.out.println("ENTERING LAUNCHER CODE");
 				bi.setImage(tableau[pointeur.getValue()].getChemin());
 
 				fontSelect = null;
