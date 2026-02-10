@@ -22,8 +22,9 @@ public class Pointeur {
     }
 
     public void lancerJeu(ClavierBorneArcade clavier){
+	System.out.println("lancerJeu appelée, F=" + clavier.getBoutonJ1ATape());
 	if(clavier.getBoutonJ1ATape()){
-
+	    System.out.println("F detected! Lancement de: " + Graphique.tableau[getValue()].getNom());
 	    //System.out.println(Graphique.tableau[getValue()].getChemin());
 	    try {
 		Graphique.stopMusiqueFond();
