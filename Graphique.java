@@ -288,7 +288,9 @@ public class Graphique {
     }
 	
 	public static void stopMusiqueFond(){
-		musiqueFond.arret();
+		if(musiqueFond != null){
+			musiqueFond.arret();
+		}
 	}
 	
 	public static void afficherTexte(int valeur){
