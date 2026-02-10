@@ -195,16 +195,9 @@ public class Graphique {
 			f.requestFocus();
 			f.getP().requestFocusInWindow();
 			
-			// DEBUG: Afficher l'état des boutons chaque 50 frames
-			if(frame % 50 == 0){
-				System.out.println("DEBUG - Haut:" + clavier.getJoyJ1HautEnfoncee() + " Bas:" + clavier.getJoyJ1BasEnfoncee() + " F:" + clavier.getBoutonJ1ATape() + " | HautTap:" + clavier.getJoyJ1HautTape() + " BasTap:" + clavier.getJoyJ1BasTape());
-			}
-			
 			if(!fermetureMenu){
 				boolean selectionResult = bs.selection(clavier);
-				System.out.println("bs.selection returned: " + selectionResult);
 				if(selectionResult){
-					System.out.println("ENTERING LAUNCHER CODE");
 				bi.setImage(tableau[pointeur.getValue()].getChemin());
 
 				fontSelect = null;

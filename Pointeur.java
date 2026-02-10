@@ -22,15 +22,11 @@ public class Pointeur {
     }
 
     public void lancerJeu(ClavierBorneArcade clavier){
-	System.out.println("lancerJeu appelée, F=" + clavier.getBoutonJ1ATape());
-	if(clavier.getBoutonJ1ATape()){
-	    System.out.println("F detected! Lancement de: " + Graphique.tableau[getValue()].getNom());
-	    //System.out.println(Graphique.tableau[getValue()].getChemin());
-	    try {
-		Graphique.stopMusiqueFond();
-		Process process = Runtime.getRuntime().exec("./"+Graphique.tableau[getValue()].getNom()+".sh");
-		process.waitFor();		//ajouté afin d'attendre la fin de l'exécution du jeu pour reprendre le contrôle sur le menu
-		Graphique.lectureMusiqueFond();
+	try {
+	    Graphique.stopMusiqueFond();
+	    Process process = Runtime.getRuntime().exec("./"+Graphique.tableau[getValue()].getNom()+".sh");
+	    process.waitFor();		//ajouté afin d'attendre la fin de l'exécution du jeu pour reprendre le contrôle sur le menu
+	    Graphique.lectureMusiqueFond();
 	    } catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -38,11 +34,6 @@ public class Pointeur {
 			e.printStackTrace();
 		}
 
-	    //System.out.println("le process sur "+Graphique.tableau[getValue()].getChemin()+" est bien lancé");
-	}
-    }
-
-    public int getValue() {
 	return value;
     }
 
