@@ -128,7 +128,11 @@ public class Graphique {
 		cptMus++;
 	    }
 	} catch (IOException e) {
-	    e.printStackTrace();
+	    cptMus = 0;
+	}
+	if(cptMus <= 0){
+	    tableauMusiques = new String[0];
+	    return;
 	}
 	//Creation d'un tableau de musiques
 	tableauMusiques = new String[cptMus];
@@ -139,7 +143,8 @@ public class Graphique {
 		i--;
 	    }
 	} catch (IOException e) {
-	    e.printStackTrace();
+	    tableauMusiques = new String[0];
+	    return;
 	}
 	//Choix d'une musique aleatoire et lecture de celle-ci
 	this.lectureMusiqueFond();
@@ -269,8 +274,11 @@ public class Graphique {
     }
     
     public static void lectureMusiqueFond() {
-    	musiqueFond = new Bruitage ("sound/bg/"+tableauMusiques[(int)(Math.random()*cptMus)]);
-    	musiqueFond.lecture();
+	    if(cptMus <= 0 || tableauMusiques == null || tableauMusiques.length == 0){
+		return;
+	    }
+	    musiqueFond = new Bruitage ("sound/bg/"+tableauMusiques[(int)(Math.random()*cptMus)]);
+	    musiqueFond.lecture();
     }
 	
 	public static void stopMusiqueFond(){
