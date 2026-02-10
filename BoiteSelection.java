@@ -109,7 +109,7 @@ public class BoiteSelection extends Boite{
 	if(clavier.getBoutonJ1ZTape()){
 	    return false;
 	}
-	return false;
+	return true;
     }
 
     public Pointeur getPointeur() {
