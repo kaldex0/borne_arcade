@@ -192,6 +192,9 @@ public class Graphique {
 				Thread.sleep(50);
 			}catch(Exception e){}
 			
+			f.requestFocus();
+			f.getP().requestFocusInWindow();
+			
 			if(!fermetureMenu){
 				if(bs.selection(clavier)){
 				bi.setImage(tableau[pointeur.getValue()].getChemin());
