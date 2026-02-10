@@ -197,7 +197,7 @@ public class Graphique {
 			
 			// DEBUG: Afficher l'état des boutons chaque 50 frames
 			if(frame % 50 == 0){
-				System.out.println("DEBUG - Haut:" + clavier.getJoyJ1HautEnfoncee() + " Bas:" + clavier.getJoyJ1BasEnfoncee() + " F:" + clavier.getBoutonJ1ATape());
+				System.out.println("DEBUG - Haut:" + clavier.getJoyJ1HautEnfoncee() + " Bas:" + clavier.getJoyJ1BasEnfoncee() + " F:" + clavier.getBoutonJ1ATape() + " | HautTap:" + clavier.getJoyJ1HautTape() + " BasTap:" + clavier.getJoyJ1BasTape());
 			}
 			
 			if(!fermetureMenu){

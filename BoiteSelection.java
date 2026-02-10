@@ -101,10 +101,15 @@ public class BoiteSelection extends Boite{
 	}
 	
 
+	// Lancer le jeu quand F est appuyé
+	if(clavier.getBoutonJ1ATape()){
+	    return true;
+	}
+	
 	if(clavier.getBoutonJ1ZTape()){
 	    return false;
 	}
-	return true;
+	return false;
     }
 
     public Pointeur getPointeur() {
