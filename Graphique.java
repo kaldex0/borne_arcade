@@ -52,6 +52,9 @@ public class Graphique {
 	clavier = new ClavierBorneArcade();
 	f.addKeyListener(clavier);
 	f.getP().addKeyListener(clavier);
+	f.requestFocus();
+	f.getP().setFocusable(true);
+	f.getP().requestFocusInWindow();
 
 	/*Retrouver le nombre de jeux dispo*/
 	Path yourPath = FileSystems.getDefault().getPath("projet/");
