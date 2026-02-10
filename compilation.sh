@@ -8,6 +8,8 @@ if [[ -d "$REPO_ROOT/../MG2D" ]]; then
     MG2D_PATH="$REPO_ROOT/../MG2D"
 elif [[ -d "$REPO_ROOT/MG2D" ]]; then
     MG2D_PATH="$REPO_ROOT/MG2D"
+elif [[ -d "$HOME/MG2D" ]]; then
+    MG2D_PATH="$HOME/MG2D"
 elif [[ -d "/home/pi/git/MG2D" ]]; then
     MG2D_PATH="/home/pi/git/MG2D"
 fi
