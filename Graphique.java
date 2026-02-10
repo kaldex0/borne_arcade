@@ -195,6 +195,11 @@ public class Graphique {
 			f.requestFocus();
 			f.getP().requestFocusInWindow();
 			
+			// DEBUG: Afficher l'état des boutons chaque 50 frames
+			if(frame % 50 == 0){
+				System.out.println("DEBUG - Haut:" + clavier.getJoyJ1HauteEnfoncee() + " Bas:" + clavier.getJoyJ1BasEnfoncee() + " F:" + clavier.getBoutonJ1ATape());
+			}
+			
 			if(!fermetureMenu){
 				if(bs.selection(clavier)){
 				bi.setImage(tableau[pointeur.getValue()].getChemin());
