@@ -196,12 +196,13 @@ public class Graphique {
 			f.getP().requestFocusInWindow();
 			
 			if(!fermetureMenu){
-				// Gérer la navigation et l'affichage
-				bs.selection(clavier);
-				bi.setImage(tableau[pointeur.getValue()].getChemin());
-				
-				// Vérifier si F est enfoncé pour lancer le jeu
-				if(clavier.getBoutonJ1ATape()){
+				try {
+					// Gérer la navigation et l'affichage
+					bs.selection(clavier);
+					bi.setImage(tableau[pointeur.getValue()].getChemin());
+					
+					// Vérifier si F est enfoncé pour lancer le jeu
+					if(clavier.getBoutonJ1ATape()){
 					// F enfoncé: lancer le jeu
 					fontSelect = null;
 					try{
@@ -230,7 +231,10 @@ public class Graphique {
 					f.ajouter(non);
 					f.ajouter(oui);
 					fermetureMenu=true;
-					
+				}
+				} catch (Exception e) {
+					System.err.println("ERREUR dans la boucle menu: ");
+					e.printStackTrace();
 				}
 			}else{
 					if(clavier.getJoyJ1DroiteEnfoncee()){
