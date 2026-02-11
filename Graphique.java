@@ -30,13 +30,7 @@ public class Graphique {
 	public static Bruitage musiqueFond;
 	private static String[] tableauMusiques;
 	private static int cptMus;
-
-
-    public Graphique(){
-    	
-
-	TAILLEX = 1280;
-	TAILLEY = 1024;
+	private boolean fAssertionEnCours = false;
 
 	font = null;
 	try{
@@ -185,39 +179,34 @@ public class Graphique {
 			}catch(Exception e){}
 			
 			if(!fermetureMenu){
-				if(bs.selection(clavier)){
-				bi.setImage(tableau[pointeur.getValue()].getChemin());
+				// Test F pour lancer le jeu (une seule fois)
+				if(clavier.getBoutonJ1ATape() && !fAssertionEnCours){
+					fAssertionEnCours = true;
+					bi.setImage(tableau[pointeur.getValue()].getChemin());
 
-				fontSelect = null;
-				try{
-				File in = new File("fonts/PrStart.ttf");
-				fontSelect = fontSelect.createFont(Font.TRUETYPE_FONT, in);
-				fontSelect = fontSelect.deriveFont(48.0f);
-				}catch (Exception e) {
-				System.err.println(e.getMessage());
-				}
+					fontSelect = null;
+					try{
+					File in = new File("fonts/PrStart.ttf");
+					fontSelect = fontSelect.createFont(Font.TRUETYPE_FONT, in);
+					fontSelect = fontSelect.deriveFont(48.0f);
+					}catch (Exception e) {
+					System.err.println(e.getMessage());
+					}
 
-				// if(!tableau[pointeur.getValue()].getTexte().getPolice().equals(fontSelect)){
-				// tableau[pointeur.getValue()].getTexte().setPolice(fontSelect);
-				// }
-				
-				
-				
-				
+					tableau[pointeur.getValue()].getTexte().setPolice(font);
 
-				tableau[pointeur.getValue()].getTexte().setPolice(font);
-
-				bd.lireFichier(tableau[pointeur.getValue()].getChemin());
-				bd.lireHighScore(tableau[pointeur.getValue()].getChemin());
-				bd.lireBouton(tableau[pointeur.getValue()].getChemin());
-				/*
-				// System.out.println(tableau[pointeur.getValue()].getChemin());
-				// bd.setMessage(tableau[pointeur.getValue()].getNom());
-				*/
-				pointeur.lancerJeu(clavier);
-				
-				
+					bd.lireFichier(tableau[pointeur.getValue()].getChemin());
+					bd.lireHighScore(tableau[pointeur.getValue()].getChemin());
+					bd.lireBouton(tableau[pointeur.getValue()].getChemin());
+					
+					pointeur.lancerJeu(clavier);
+					fAssertionEnCours = false;
+					
+				} else if(bs.selection(clavier)){
+					// Navigation normale (flèches up/down)
+					
 				}else{
+					// Z a été pressé: afficher dialogue quit
 					f.ajouter(fondBlancTransparent);
 					f.ajouter(message);
 					f.ajouter(rectSelection);
