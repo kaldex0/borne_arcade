@@ -32,6 +32,7 @@ public class Graphique {
 	private static int cptMus;
 	private boolean fAssertionEnCours = false;
 
+    public Graphique() {
 	font = null;
 	try{
 	    File in = new File("fonts/PrStart.ttf");
