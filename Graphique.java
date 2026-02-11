@@ -30,9 +30,14 @@ public class Graphique {
 	public static Bruitage musiqueFond;
 	private static String[] tableauMusiques;
 	private static int cptMus;
-	private boolean fAssertionEnCours = false;
 
-    public Graphique() {
+
+    public Graphique(){
+    	
+
+	TAILLEX = 1280;
+	TAILLEY = 1024;
+
 	font = null;
 	try{
 	    File in = new File("fonts/PrStart.ttf");
@@ -44,9 +49,6 @@ public class Graphique {
 
 	//f = new Fenetre("_Menu Borne D'arcade_",TAILLEX,TAILLEY);
 	f.setVisible(true);
-	GraphicsDevice screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-	TAILLEX = screen.getDisplayMode().getWidth();
-	TAILLEY = screen.getDisplayMode().getHeight();
 	clavier = new ClavierBorneArcade();
 	f.addKeyListener(clavier);
 	f.getP().addKeyListener(clavier);
@@ -183,34 +185,39 @@ public class Graphique {
 			}catch(Exception e){}
 			
 			if(!fermetureMenu){
-				// Test F pour lancer le jeu (une seule fois)
-				if(clavier.getBoutonJ1ATape() && !fAssertionEnCours){
-					fAssertionEnCours = true;
-					bi.setImage(tableau[pointeur.getValue()].getChemin());
+				if(bs.selection(clavier)){
+				bi.setImage(tableau[pointeur.getValue()].getChemin());
 
-					fontSelect = null;
-					try{
-					File in = new File("fonts/PrStart.ttf");
-					fontSelect = fontSelect.createFont(Font.TRUETYPE_FONT, in);
-					fontSelect = fontSelect.deriveFont(48.0f);
-					}catch (Exception e) {
-					System.err.println(e.getMessage());
-					}
+				fontSelect = null;
+				try{
+				File in = new File("fonts/PrStart.ttf");
+				fontSelect = fontSelect.createFont(Font.TRUETYPE_FONT, in);
+				fontSelect = fontSelect.deriveFont(48.0f);
+				}catch (Exception e) {
+				System.err.println(e.getMessage());
+				}
 
-					tableau[pointeur.getValue()].getTexte().setPolice(font);
+				// if(!tableau[pointeur.getValue()].getTexte().getPolice().equals(fontSelect)){
+				// tableau[pointeur.getValue()].getTexte().setPolice(fontSelect);
+				// }
+				
+				
+				
+				
 
-					bd.lireFichier(tableau[pointeur.getValue()].getChemin());
-					bd.lireHighScore(tableau[pointeur.getValue()].getChemin());
-					bd.lireBouton(tableau[pointeur.getValue()].getChemin());
-					
-					pointeur.lancerJeu(clavier);
-					fAssertionEnCours = false;
-					
-				} else if(bs.selection(clavier)){
-					// Navigation normale (flèches up/down)
-					
+				tableau[pointeur.getValue()].getTexte().setPolice(font);
+
+				bd.lireFichier(tableau[pointeur.getValue()].getChemin());
+				bd.lireHighScore(tableau[pointeur.getValue()].getChemin());
+				bd.lireBouton(tableau[pointeur.getValue()].getChemin());
+				/*
+				// System.out.println(tableau[pointeur.getValue()].getChemin());
+				// bd.setMessage(tableau[pointeur.getValue()].getNom());
+				*/
+				pointeur.lancerJeu(clavier);
+				
+				
 				}else{
-					// Z a été pressé: afficher dialogue quit
 					f.ajouter(fondBlancTransparent);
 					f.ajouter(message);
 					f.ajouter(rectSelection);
@@ -262,17 +269,12 @@ public class Graphique {
     }
     
     public static void lectureMusiqueFond() {
-	if(cptMus <= 0 || tableauMusiques == null || tableauMusiques.length == 0){
-	    return;
-	}
     	musiqueFond = new Bruitage ("sound/bg/"+tableauMusiques[(int)(Math.random()*cptMus)]);
     	musiqueFond.lecture();
     }
 	
 	public static void stopMusiqueFond(){
-		if(musiqueFond != null){
-			musiqueFond.arret();
-		}
+		musiqueFond.arret();
 	}
 	
 	public static void afficherTexte(int valeur){

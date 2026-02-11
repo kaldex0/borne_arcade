@@ -17,15 +17,7 @@ public class BoiteImage extends Boite{
     }
 
     public void setImage(String chemin) {
-	String photoPath = chemin + "/photo_small.png";
-	java.io.File photoFile = new java.io.File(photoPath);
-	
-	if(photoFile.exists()){
-	    this.image.setImg(photoPath);
-	} else {
-	    // Fallback à l'image par défaut
-	    this.image.setImg("img/fond.png");
-	}
+	this.image.setImg(chemin+"/photo_small.png");
 	//this.image.setTaille(400, 320);
     }
 

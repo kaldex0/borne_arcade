@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import MG2D.geometrie.Texture;	
-import MG2D.Couleur;
+import MG2D.geometrie.Couleur;
 import MG2D.geometrie.Point;
 import MG2D.geometrie.Rectangle;
 import MG2D.geometrie.Texte;
@@ -70,7 +70,7 @@ public class BoiteDescription extends Boite{
 	}
 	
 	//declaration des textes bouton + joystick
-	this.tJoystick = new Texte(new Couleur(0, 0, 0), "...", font1, new Point(760, 80));
+	this.tJoystick = new Texte(Couleur .NOIR, "...", font1, new Point(760, 80));
 	for(int i = 0 ; i < 3 ; i++){
 	    this.tBouton[i] = new Texte(Couleur .NOIR, "...", font1, new Point(910+130*i, 120));
 	}
@@ -86,7 +86,7 @@ public class BoiteDescription extends Boite{
 	}
 	nombreLigne = 0;
 
-	highscore = new Texte(new Couleur(0, 0, 0), "HIGHSCORE", font3, new Point(960, 335));
+	highscore = new Texte(Couleur.NOIR, "HIGHSCORE", font3, new Point(960, 335));
 	listeHighScore = new Texte[10];
 	for(int i=0;i<5;i++){
 	    listeHighScore[i] = new Texte(Couleur.NOIR, "", font4, new Point(820,310));
@@ -206,8 +206,7 @@ public class BoiteDescription extends Boite{
 	    String ligne;
 	    ligne = br.readLine();
 	    if(ligne == null){
-		// Fichier vide, utilise les valeurs par défaut
-		return;
+		System.err.println("le fichier bouton est surement vide!");
 	    }else{
 		texteBouton = ligne.split(":");
 		//changer le texte des boutons

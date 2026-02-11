@@ -4,7 +4,7 @@ Généré le {{GENERATED_AT}}
 
 ## Vue d'ensemble
 
-La borne d'arcade est un menu Java plein écran qui liste automatiquement les jeux présents dans le dossier [projet](../..//projet/). Le menu affiche :
+La borne d'arcade est un menu Java plein écran qui liste automatiquement les jeux présents dans le dossier [projet](../../projet/). Le menu affiche :
 - le nom du jeu (nom du dossier)
 - une miniature (photo_small.png)
 - une description (description.txt)
@@ -44,6 +44,8 @@ Chaque jeu est lancé par un script shell portant le même nom que son dossier :
 
 - Java (OpenJDK 11 recommandé)
 - MG2D (bibliothèque graphique)
+  - emplacement par défaut : `../MG2D` (voisin du repo)
+  - ou variable d'environnement `MG2D_PATH`
 - Outils système : `git`, `x11-xserver-utils`, `lxterminal`
 
 ## Compilation

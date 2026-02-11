@@ -46,7 +46,23 @@ cd ~/git
   borne_arcade/
 ```
 
-5. Lancer une fois manuellement :
+5. Vérifier MG2D :
+
+- Placez MG2D à côté du dépôt `borne_arcade` :
+
+```
+~/git/
+  MG2D/
+  borne_arcade/
+```
+
+- Ou définir une variable d'environnement avant lancement :
+
+```
+export MG2D_PATH=/chemin/vers/MG2D
+```
+
+6. Lancer une fois manuellement :
 
 ```
 cd ~/git/borne_arcade

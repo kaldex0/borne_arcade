@@ -62,8 +62,10 @@ Exemple Java :
 ```
 #!/bin/bash
 cd projet/<NomDuJeu>
-java -cp .:../..:/home/pi/git/MG2D Main
+java -cp .:../..:${MG2D_PATH} Main
 ```
+
+Si `MG2D_PATH` n'est pas défini, placez MG2D à côté du repo : `../MG2D`.
 
 Exemple réel ajouté : `StarDodger` (jeu d'esquive avec boost) :
 - Dossier : `projet/StarDodger/`

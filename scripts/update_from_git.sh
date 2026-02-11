@@ -8,8 +8,10 @@ cd "$REPO_ROOT"
 
 # Met à jour depuis le dépôt distant si un remote est configuré
 if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-  if git remote -v >/dev/null 2>&1; then
+  if [[ -n "$(git remote)" ]]; then
     git pull --rebase
+  else
+    echo "Aucun remote git configure, pull ignore."
   fi
 fi
 
