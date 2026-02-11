@@ -22,8 +22,6 @@ public class Pointeur {
     }
 
     public void lancerJeu(ClavierBorneArcade clavier){
-	if(clavier.getBoutonJ1ATape()){
-
 	    //System.out.println(Graphique.tableau[getValue()].getChemin());
 	    try {
 		Graphique.stopMusiqueFond();
@@ -38,7 +36,6 @@ public class Pointeur {
 		}
 
 	    //System.out.println("le process sur "+Graphique.tableau[getValue()].getChemin()+" est bien lancé");
-	}
     }
 
     public int getValue() {
