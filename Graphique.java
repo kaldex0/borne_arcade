@@ -164,6 +164,7 @@ public class Graphique {
 		int frame=0;
 		boolean fermetureMenu=false;
 		int selectionSur = 0;
+		boolean jeuEnCours = false;  // Flag pour éviter de relancer le jeu en boucle
 		Texte textePrec=tableau[pointeur.getValue()].getTexte();
 		while(true){
 			try {
@@ -197,7 +198,9 @@ public class Graphique {
 			
 			if(!fermetureMenu){
 				boolean selectionResult = bs.selection(clavier);
-				if(selectionResult){
+				if(selectionResult && !jeuEnCours){
+					// Lancer le jeu une seule fois
+					jeuEnCours = true;
 				bi.setImage(tableau[pointeur.getValue()].getChemin());
 
 				fontSelect = null;
@@ -209,27 +212,18 @@ public class Graphique {
 				System.err.println(e.getMessage());
 				}
 
-				// if(!tableau[pointeur.getValue()].getTexte().getPolice().equals(fontSelect)){
-				// tableau[pointeur.getValue()].getTexte().setPolice(fontSelect);
-				// }
-				
-				
-				
-				
-
 				tableau[pointeur.getValue()].getTexte().setPolice(font);
 
 				bd.lireFichier(tableau[pointeur.getValue()].getChemin());
 				bd.lireHighScore(tableau[pointeur.getValue()].getChemin());
 				bd.lireBouton(tableau[pointeur.getValue()].getChemin());
-				/*
-				// System.out.println(tableau[pointeur.getValue()].getChemin());
-				// bd.setMessage(tableau[pointeur.getValue()].getNom());
-				*/
+				
 				pointeur.lancerJeu(clavier);
+				jeuEnCours = false;  // Jeu terminé, réinitialise le flag
 				
-				
-				}else{
+				}else if(!selectionResult){
+					// Quand selection() retourne false (quit ou jeu terminé), réinitialise le flag
+					jeuEnCours = false;
 					f.ajouter(fondBlancTransparent);
 					f.ajouter(message);
 					f.ajouter(rectSelection);
