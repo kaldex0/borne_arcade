@@ -164,7 +164,6 @@ public class Graphique {
 		int frame=0;
 		boolean fermetureMenu=false;
 		int selectionSur = 0;
-		boolean jeuEnCours = false;  // Flag pour éviter de relancer le jeu en boucle
 		Texte textePrec=tableau[pointeur.getValue()].getTexte();
 		while(true){
 			try {

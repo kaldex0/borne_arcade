@@ -22,21 +22,14 @@ public class Pointeur {
     }
 
     public void lancerJeu(ClavierBorneArcade clavier){
-	System.out.println("LANCEMENT DU JEU: " + Graphique.tableau[getValue()].getNom());
 	try {
 	    Graphique.stopMusiqueFond();
-	    String cmdLine = "./"+Graphique.tableau[getValue()].getNom()+".sh";
-	    System.out.println("Exécution: " + cmdLine);
-	    Process process = Runtime.getRuntime().exec(cmdLine);
-	    process.waitFor();
-	    System.out.println("Jeu terminé");
+	    Process process = Runtime.getRuntime().exec("./"+Graphique.tableau[getValue()].getNom()+".sh");
+	    process.waitFor();		//ajouté afin d'attendre la fin de l'exécution du jeu pour reprendre le contrôle sur le menu
 	    Graphique.lectureMusiqueFond();
-	    } catch (IOException e) {
-		System.err.println("ERREUR: Impossible de lancer le jeu!");
-		e.printStackTrace();
-	    } catch(Exception e){
-		System.err.println("ERREUR lors de l'exécution du jeu:");
-			e.printStackTrace();
+	} catch (IOException e) {
+	    e.printStackTrace();
+	} catch(Exception e){	//on catche toutes les exceptions, nécessaire pour le waitFor()
 	    }
     }
 
