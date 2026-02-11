@@ -197,33 +197,33 @@ public class Graphique {
 			f.getP().requestFocusInWindow();
 			
 			if(!fermetureMenu){
-				boolean selectionResult = bs.selection(clavier);
-				if(selectionResult && !jeuEnCours){
-					// Lancer le jeu une seule fois
-					jeuEnCours = true;
-				bi.setImage(tableau[pointeur.getValue()].getChemin());
-
-				fontSelect = null;
-				try{
-				File in = new File("fonts/PrStart.ttf");
-				fontSelect = fontSelect.createFont(Font.TRUETYPE_FONT, in);
-				fontSelect = fontSelect.deriveFont(48.0f);
-				}catch (Exception e) {
-				System.err.println(e.getMessage());
-				}
-
-				tableau[pointeur.getValue()].getTexte().setPolice(font);
-
-				bd.lireFichier(tableau[pointeur.getValue()].getChemin());
-				bd.lireHighScore(tableau[pointeur.getValue()].getChemin());
-				bd.lireBouton(tableau[pointeur.getValue()].getChemin());
+				// Gérer la navigation (flèches) via bs.selection()
+				bs.selection(clavier);
 				
-				pointeur.lancerJeu(clavier);
-				jeuEnCours = false;  // Jeu terminé, réinitialise le flag
-				
-				}else if(!selectionResult){
-					// Quand selection() retourne false (quit ou jeu terminé), réinitialise le flag
-					jeuEnCours = false;
+				if(clavier.getBoutonJ1ATape()){
+					// F enfoncé: lancer le jeu
+					bi.setImage(tableau[pointeur.getValue()].getChemin());
+
+					fontSelect = null;
+					try{
+					File in = new File("fonts/PrStart.ttf");
+					fontSelect = fontSelect.createFont(Font.TRUETYPE_FONT, in);
+					fontSelect = fontSelect.deriveFont(48.0f);
+					}catch (Exception e) {
+					System.err.println(e.getMessage());
+					}
+
+					tableau[pointeur.getValue()].getTexte().setPolice(font);
+
+					bd.lireFichier(tableau[pointeur.getValue()].getChemin());
+					bd.lireHighScore(tableau[pointeur.getValue()].getChemin());
+					bd.lireBouton(tableau[pointeur.getValue()].getChemin());
+					
+					pointeur.lancerJeu(clavier);
+					// Après le jeu, on continue le menu
+					
+				}else if(clavier.getBoutonJ1ZTape()){
+					// Z enfoncé: afficher le dialogue de quit
 					f.ajouter(fondBlancTransparent);
 					f.ajouter(message);
 					f.ajouter(rectSelection);
