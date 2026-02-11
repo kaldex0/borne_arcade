@@ -9,7 +9,7 @@ import MG2D.Clavier;
 import MG2D.audio.*;
 import java.io.File;
 import MG2D.geometrie.Texte;
-import MG2D.Couleur;
+import MG2D.geometrie.Couleur;
 
 
 public class BoiteSelection extends Boite{
@@ -52,14 +52,14 @@ public class BoiteSelection extends Boite{
 					Graphique.tableau[i].getTexte().translater(0, 110*(Graphique.tableau.length -1));
 					Graphique.tableau[i].getTexture().translater(0, 110*(Graphique.tableau.length -1));
 					Graphique.tableau[i].getTexte().setPolice(font);
-				Graphique.tableau[i].getTexte().setCouleur(new Couleur(255, 255, 255));
+					Graphique.tableau[i].getTexte().setCouleur(Couleur.BLANC);
 				}
 		}else{
 			for(int i = 0 ; i < Graphique.tableau.length ; i++){
 				Graphique.tableau[i].getTexte().translater(0, -110);
 				Graphique.tableau[i].getTexture().translater(0, -110);
 				Graphique.tableau[i].getTexte().setPolice(font);
-			Graphique.tableau[i].getTexte().setCouleur(new Couleur(255, 255, 255));
+				Graphique.tableau[i].getTexte().setCouleur(Couleur.BLANC);
 			}
 			pointeur.setValue(pointeur.getValue() + 1);
 		}	
@@ -86,26 +86,24 @@ public class BoiteSelection extends Boite{
 					Graphique.tableau[i].getTexte().translater(0, -110*(Graphique.tableau.length-1));
 					Graphique.tableau[i].getTexture().translater(0, -110*(Graphique.tableau.length-1));
 					Graphique.tableau[i].getTexte().setPolice(font);
-				Graphique.tableau[i].getTexte().setCouleur(new Couleur(255, 255, 255));
-			}
-		}else{
-			for(int i = 0 ; i < Graphique.tableau.length ; i++){
-				Graphique.tableau[i].getTexte().translater(0, 110);
-				Graphique.tableau[i].getTexture().translater(0, 110);
-				Graphique.tableau[i].getTexte().setPolice(font);
-				Graphique.tableau[i].getTexte().setCouleur(new Couleur(255, 255, 255));
-			}
+					Graphique.tableau[i].getTexte().setCouleur(Couleur.BLANC);
+						
+				}
+			}else{
+				for(int i = 0 ; i < Graphique.tableau.length ; i++){
+					Graphique.tableau[i].getTexte().translater(0, 110);
+					Graphique.tableau[i].getTexture().translater(0, 110);
+					Graphique.tableau[i].getTexte().setPolice(font);
+					Graphique.tableau[i].getTexte().setCouleur(Couleur.BLANC);
+						
+				}
+			
 				pointeur.setValue(pointeur.getValue() -1);	
 				System.out.println(pointeur.getValue());		
 			}
 	}
 	
 
-	// Lancer le jeu quand F est appuyé
-	if(clavier.getBoutonJ1ATape()){
-	    return true;
-	}
-	
 	if(clavier.getBoutonJ1ZTape()){
 	    return false;
 	}

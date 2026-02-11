@@ -52,9 +52,6 @@ public class Graphique {
 	clavier = new ClavierBorneArcade();
 	f.addKeyListener(clavier);
 	f.getP().addKeyListener(clavier);
-	f.requestFocus();
-	f.getP().setFocusable(true);
-	f.getP().requestFocusInWindow();
 
 	/*Retrouver le nombre de jeux dispo*/
 	Path yourPath = FileSystems.getDefault().getPath("projet/");
@@ -131,11 +128,7 @@ public class Graphique {
 		cptMus++;
 	    }
 	} catch (IOException e) {
-	    cptMus = 0;
-	}
-	if(cptMus <= 0){
-	    tableauMusiques = new String[0];
-	    return;
+	    e.printStackTrace();
 	}
 	//Creation d'un tableau de musiques
 	tableauMusiques = new String[cptMus];
@@ -146,8 +139,7 @@ public class Graphique {
 		i--;
 	    }
 	} catch (IOException e) {
-	    tableauMusiques = new String[0];
-	    return;
+	    e.printStackTrace();
 	}
 	//Choix d'une musique aleatoire et lecture de celle-ci
 	this.lectureMusiqueFond();
@@ -192,37 +184,40 @@ public class Graphique {
 				Thread.sleep(50);
 			}catch(Exception e){}
 			
-			f.requestFocus();
-			f.getP().requestFocusInWindow();
-			
 			if(!fermetureMenu){
-				try {
-					// Gérer la navigation et l'affichage
-					bs.selection(clavier);
-					bi.setImage(tableau[pointeur.getValue()].getChemin());
-					
-					// Vérifier si F est enfoncé pour lancer le jeu
-					if(clavier.getBoutonJ1ATape()){
-					// F enfoncé: lancer le jeu
-					fontSelect = null;
-					try{
-						File in = new File("fonts/PrStart.ttf");
-						fontSelect = fontSelect.createFont(Font.TRUETYPE_FONT, in);
-						fontSelect = fontSelect.deriveFont(48.0f);
-					}catch (Exception e) {
-						System.err.println(e.getMessage());
-					}
+				if(bs.selection(clavier)){
+				bi.setImage(tableau[pointeur.getValue()].getChemin());
 
-					tableau[pointeur.getValue()].getTexte().setPolice(font);
+				fontSelect = null;
+				try{
+				File in = new File("fonts/PrStart.ttf");
+				fontSelect = fontSelect.createFont(Font.TRUETYPE_FONT, in);
+				fontSelect = fontSelect.deriveFont(48.0f);
+				}catch (Exception e) {
+				System.err.println(e.getMessage());
+				}
 
-					bd.lireFichier(tableau[pointeur.getValue()].getChemin());
-					bd.lireHighScore(tableau[pointeur.getValue()].getChemin());
-					bd.lireBouton(tableau[pointeur.getValue()].getChemin());
-					
-					pointeur.lancerJeu(clavier);
-					
-				}else if(clavier.getBoutonJ1ZTape()){
-					// Z enfoncé: afficher le dialogue de quit
+				// if(!tableau[pointeur.getValue()].getTexte().getPolice().equals(fontSelect)){
+				// tableau[pointeur.getValue()].getTexte().setPolice(fontSelect);
+				// }
+				
+				
+				
+				
+
+				tableau[pointeur.getValue()].getTexte().setPolice(font);
+
+				bd.lireFichier(tableau[pointeur.getValue()].getChemin());
+				bd.lireHighScore(tableau[pointeur.getValue()].getChemin());
+				bd.lireBouton(tableau[pointeur.getValue()].getChemin());
+				/*
+				// System.out.println(tableau[pointeur.getValue()].getChemin());
+				// bd.setMessage(tableau[pointeur.getValue()].getNom());
+				*/
+				pointeur.lancerJeu(clavier);
+				
+				
+				}else{
 					f.ajouter(fondBlancTransparent);
 					f.ajouter(message);
 					f.ajouter(rectSelection);
@@ -231,10 +226,7 @@ public class Graphique {
 					f.ajouter(non);
 					f.ajouter(oui);
 					fermetureMenu=true;
-				}
-				} catch (Exception e) {
-					System.err.println("ERREUR dans la boucle menu: ");
-					e.printStackTrace();
+					
 				}
 			}else{
 					if(clavier.getJoyJ1DroiteEnfoncee()){
@@ -277,17 +269,12 @@ public class Graphique {
     }
     
     public static void lectureMusiqueFond() {
-	    if(cptMus <= 0 || tableauMusiques == null || tableauMusiques.length == 0){
-		return;
-	    }
-	    musiqueFond = new Bruitage ("sound/bg/"+tableauMusiques[(int)(Math.random()*cptMus)]);
-	    musiqueFond.lecture();
+    	musiqueFond = new Bruitage ("sound/bg/"+tableauMusiques[(int)(Math.random()*cptMus)]);
+    	musiqueFond.lecture();
     }
 	
 	public static void stopMusiqueFond(){
-		if(musiqueFond != null){
-			musiqueFond.arret();
-		}
+		musiqueFond.arret();
 	}
 	
 	public static void afficherTexte(int valeur){

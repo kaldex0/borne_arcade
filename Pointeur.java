@@ -1,7 +1,7 @@
 import java.io.IOException;
 
 import MG2D.geometrie.Texture;
-import MG2D.Couleur;
+import MG2D.geometrie.Couleur;
 import MG2D.geometrie.Point;
 import MG2D.geometrie.Triangle;
 import MG2D.Clavier;
@@ -22,15 +22,23 @@ public class Pointeur {
     }
 
     public void lancerJeu(ClavierBorneArcade clavier){
-	try {
-	    Graphique.stopMusiqueFond();
-	    Process process = Runtime.getRuntime().exec("./"+Graphique.tableau[getValue()].getNom()+".sh");
-	    process.waitFor();		//ajouté afin d'attendre la fin de l'exécution du jeu pour reprendre le contrôle sur le menu
-	    Graphique.lectureMusiqueFond();
-	} catch (IOException e) {
-	    e.printStackTrace();
-	} catch(Exception e){	//on catche toutes les exceptions, nécessaire pour le waitFor()
-	    }
+	if(clavier.getBoutonJ1ATape()){
+
+	    //System.out.println(Graphique.tableau[getValue()].getChemin());
+	    try {
+		Graphique.stopMusiqueFond();
+		Process process = Runtime.getRuntime().exec("./"+Graphique.tableau[getValue()].getNom()+".sh");
+		process.waitFor();		//ajouté afin d'attendre la fin de l'exécution du jeu pour reprendre le contrôle sur le menu
+		Graphique.lectureMusiqueFond();
+	    } catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	    } catch(Exception e){	//on catche toutes les exceptions, nécessaire pour le waitFor()
+			e.printStackTrace();
+		}
+
+	    //System.out.println("le process sur "+Graphique.tableau[getValue()].getChemin()+" est bien lancé");
+	}
     }
 
     public int getValue() {

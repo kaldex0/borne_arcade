@@ -83,37 +83,3 @@ Sélectionnez le jeu avec haut/bas du joystick du joueur 1 et lancez le jeu avec
 Quittez le logiciel avec le bouton Z du joueur 1. Une demande de confirmation s'affichera. Validez oui ou non avec le bouton A du joueur 1.
 
 Si vous quittez le menu, vous reviendrez sur le terminal. Attendez 30 secondes pour une extinction totale de la machine.
-
-Documentation (génération automatique)
-----
-
-Sources : [Documents/Documentation/src](Documents/Documentation/src)
-
-Génération (Linux/Raspberry Pi) :
-```
-./scripts/generate_docs.sh
-```
-
-Génération (Windows) :
-```
-powershell -ExecutionPolicy Bypass -File .\scripts\generate_docs.ps1
-```
-
-Sortie : [Documents/Documentation/generated](Documents/Documentation/generated)
-
-Installation et déploiement automatique
-----
-
-Installation complète (dépendances + service + hook git) :
-```
-sudo ./scripts/install_borne.sh
-```
-
-Après installation du hook, un `git pull` déclenche automatiquement :
-- recompilation
-- redémarrage du service
-
-Hook manuel :
-```
-sudo ./scripts/install_git_hook.sh
-```
