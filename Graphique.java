@@ -196,20 +196,20 @@ public class Graphique {
 			f.getP().requestFocusInWindow();
 			
 			if(!fermetureMenu){
-				// Gérer la navigation (flèches) via bs.selection()
+				// Gérer la navigation et l'affichage
 				bs.selection(clavier);
+				bi.setImage(tableau[pointeur.getValue()].getChemin());
 				
+				// Vérifier si F est enfoncé pour lancer le jeu
 				if(clavier.getBoutonJ1ATape()){
 					// F enfoncé: lancer le jeu
-					bi.setImage(tableau[pointeur.getValue()].getChemin());
-
 					fontSelect = null;
 					try{
-					File in = new File("fonts/PrStart.ttf");
-					fontSelect = fontSelect.createFont(Font.TRUETYPE_FONT, in);
-					fontSelect = fontSelect.deriveFont(48.0f);
+						File in = new File("fonts/PrStart.ttf");
+						fontSelect = fontSelect.createFont(Font.TRUETYPE_FONT, in);
+						fontSelect = fontSelect.deriveFont(48.0f);
 					}catch (Exception e) {
-					System.err.println(e.getMessage());
+						System.err.println(e.getMessage());
 					}
 
 					tableau[pointeur.getValue()].getTexte().setPolice(font);
@@ -219,7 +219,6 @@ public class Graphique {
 					bd.lireBouton(tableau[pointeur.getValue()].getChemin());
 					
 					pointeur.lancerJeu(clavier);
-					// Après le jeu, on continue le menu
 					
 				}else if(clavier.getBoutonJ1ZTape()){
 					// Z enfoncé: afficher le dialogue de quit
