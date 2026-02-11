@@ -44,6 +44,9 @@ public class Graphique {
 
 	//f = new Fenetre("_Menu Borne D'arcade_",TAILLEX,TAILLEY);
 	f.setVisible(true);
+	GraphicsDevice screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+	TAILLEX = screen.getDisplayMode().getWidth();
+	TAILLEY = screen.getDisplayMode().getHeight();
 	clavier = new ClavierBorneArcade();
 	f.addKeyListener(clavier);
 	f.getP().addKeyListener(clavier);
