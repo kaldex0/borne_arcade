@@ -1,7 +1,7 @@
 import random
 import pygame
 import math
-from constantes import RED, SCREEN_WIDTH, SCREEN_HEIGHT, WHITE, BALL_SPEED_X, BALL_SPEED_FALL, BALL_TOP_BOUNCE, BALL_BOTTOM_BOUNCE
+from .constantes import RED, SCREEN_WIDTH, SCREEN_HEIGHT, WHITE, BALL_SPEED_X, BALL_SPEED_FALL, BALL_TOP_BOUNCE, BALL_BOTTOM_BOUNCE
 
 # Font
 pygame.init()

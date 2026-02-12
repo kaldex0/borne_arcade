@@ -1,5 +1,5 @@
 import pygame
-from constantes import RED
+from .constantes import RED
 
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, x: int, y: int):

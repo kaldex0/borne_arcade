@@ -1,6 +1,6 @@
-from constantes import SCREEN_WIDTH, SCREEN_HEIGHT
-from menu import Menu
-from game import Game
+from .constantes import SCREEN_WIDTH, SCREEN_HEIGHT
+from .menu import Menu
+from .game import Game
 
 import pygame
 import random

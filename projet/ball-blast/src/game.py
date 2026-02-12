@@ -1,7 +1,7 @@
-from ball import Ball
-from bullet import Bullet
-from player import Player
-from constantes import WHITE, BLACK, RED, GREEN, BLUE, SCREEN_WIDTH, SCREEN_HEIGHT, FONT, FIRERATE, BALL_EQUIVALENT, FONT_SCORE
+from .ball import Ball
+from .bullet import Bullet
+from .player import Player
+from .constantes import WHITE, BLACK, RED, GREEN, BLUE, SCREEN_WIDTH, SCREEN_HEIGHT, FONT, FIRERATE, BALL_EQUIVALENT, FONT_SCORE
 
 import pygame
 import random

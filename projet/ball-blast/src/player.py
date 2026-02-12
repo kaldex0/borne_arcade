@@ -1,5 +1,5 @@
 import pygame
-from constantes import RED, SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_SPEED
+from .constantes import RED, SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_SPEED
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
