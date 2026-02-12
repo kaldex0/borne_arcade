@@ -72,12 +72,22 @@ Exemple réel ajouté : `StarDodger` (jeu d'esquive avec boost) :
 - Script : `StarDodger.sh`
 - Commande boost : bouton A (J1)
 
+Exemple Python ajouté : `NebulaRun` :
+- Dossier : `projet/NebulaRun/`
+- Script : `NebulaRun.sh`
+
 Exemple Python :
 
 ```
 #!/bin/bash
 cd projet/<NomDuJeu>
 python3 main.py
+```
+
+Si votre jeu utilise Pygame :
+
+```
+sudo apt-get install -y python3-pygame
 ```
 
 Rendre le script exécutable :

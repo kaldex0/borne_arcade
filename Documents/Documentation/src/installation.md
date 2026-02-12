@@ -10,7 +10,31 @@ Généré le {{GENERATED_AT}}
 
 ## Système d'exploitation
 
-- Raspberry Pi OS 32-bit (Legacy/Bullseye recommandé pour compatibilité)
+- Raspberry Pi OS 32-bit (Legacy/Bullseye recommandé pour compatibilité, RPi 3 B+)
+
+## Migration Raspberry Pi OS (Bullseye)
+
+Si vous partez d'une installation ancienne :
+
+1. Sauvegarder le dossier du projet et MG2D :
+
+```
+tar -czf borne_arcade_backup.tgz ~/borne_arcade ~/MG2D
+```
+
+2. Mettre à jour la distribution :
+
+```
+sudo apt-get update
+sudo apt-get full-upgrade -y
+sudo reboot
+```
+
+3. Réinstaller les dépendances avec le script :
+
+```
+sudo ~/borne_arcade/scripts/setup_rpi_os.sh
+```
 
 ## Installation rapide (sur Raspberry Pi OS)
 
@@ -24,7 +48,7 @@ sudo apt-get full-upgrade -y
 2. Installer les dépendances principales :
 
 ```
-sudo apt-get install -y git rsync unzip openjdk-11-jdk x11-xserver-utils lxterminal alsa-utils pulseaudio
+sudo apt-get install -y git rsync unzip openjdk-11-jdk python3 python3-pip python3-pygame x11-xserver-utils lxterminal xdotool alsa-utils pulseaudio
 ```
 
 3. Cloner les dépôts :
@@ -62,7 +86,13 @@ cd ~/git
 export MG2D_PATH=/chemin/vers/MG2D
 ```
 
-6. Lancer une fois manuellement :
+6. (Optionnel) Installer LOVE2D pour les jeux Lua :
+
+```
+sudo apt-get install -y love
+```
+
+7. Lancer une fois manuellement :
 
 ```
 cd ~/git/borne_arcade
@@ -102,6 +132,20 @@ Installation du hook :
 
 ```
 sudo ~/git/borne_arcade/scripts/install_git_hook.sh
+```
+
+## Tests rapides
+
+Validation des dépendances et assets :
+
+```
+~/git/borne_arcade/scripts/validate_all.sh
+```
+
+Si des jeux Python ou LOVE2D ne se lancent pas, vérifiez :
+
+```
+~/git/borne_arcade/scripts/validate_launchers.sh
 ```
 
 ## Mise à jour des dépendances

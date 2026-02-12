@@ -46,7 +46,9 @@ Chaque jeu est lancé par un script shell portant le même nom que son dossier :
 - MG2D (bibliothèque graphique)
   - emplacement par défaut : `../MG2D` (voisin du repo)
   - ou variable d'environnement `MG2D_PATH`
-- Outils système : `git`, `x11-xserver-utils`, `lxterminal`
+- Jeux Python : `python3`, `python3-pygame`
+- Outils système : `git`, `x11-xserver-utils`, `lxterminal`, `xdotool`
+- Optionnel : `love` (LOVE2D pour CursedWare)
 
 ## Compilation
 
@@ -70,3 +72,11 @@ Scripts principaux :
 - [scripts/install_git_hook.sh](../../scripts/install_git_hook.sh) : installe le hook `post-merge`
 
 Le hook `post-merge` exécute automatiquement `update_from_git.sh` après chaque `git pull`.
+
+## Validation rapide
+
+Scripts disponibles :
+- `scripts/validate_dependencies.sh` : vérifie les outils requis
+- `scripts/validate_assets.sh` : vérifie les fichiers requis par jeu
+- `scripts/validate_launchers.sh` : vérifie les scripts de lancement par jeu
+- `scripts/validate_all.sh` : exécute les deux

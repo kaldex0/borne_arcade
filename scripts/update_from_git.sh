@@ -16,7 +16,11 @@ if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 fi
 
 # Recompile si besoin
+chmod +x ./*.sh scripts/*.sh || true
 ./compilation.sh
+
+# Validation rapide (non bloquante)
+./scripts/validate_all.sh || echo "Validation: anomalies detectees"
 
 # Redémarre le service si présent
 if systemctl is-enabled borne-arcade.service >/dev/null 2>&1; then

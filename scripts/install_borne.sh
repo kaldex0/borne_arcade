@@ -28,6 +28,7 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 # 4) Compilation initiale
 cd "$REPO_ROOT"
+chmod +x ./*.sh scripts/*.sh || true
 ./compilation.sh
 
 # 5) Redémarrage service
