@@ -41,12 +41,12 @@ HIT_BOX_PIXEL = 30  # Tolérance
 
 KEY_MAPPING = {0: pygame.K_t, 1: pygame.K_y, 2: pygame.K_a, 3: pygame.K_z}
 
-PAUSE_KEY = pygame.K_f
+	PAUSE_KEY = pygame.K_g
 
 # Contrôles de navigation dans les menus
 MENU_UP_KEY = pygame.K_UP
 MENU_DOWN_KEY = pygame.K_DOWN
-MENU_SELECT_KEY = pygame.K_g
+	MENU_SELECT_KEY = pygame.K_f
 MENU_BACK_KEY = pygame.K_h
 
 # Contrôles pour les menus (pause, fin)
