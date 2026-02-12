@@ -1,3 +1,5 @@
+import java.io.File;
+
 import MG2D.geometrie.Point;
 import MG2D.geometrie.Rectangle;
 import MG2D.geometrie.Texture;
@@ -5,11 +7,13 @@ import MG2D.geometrie.Texture;
 
 public class BoiteImage extends Boite{
 
+    private static final String PLACEHOLDER = "img/blancTransparent.png";
+
     Texture image;
 
     BoiteImage(Rectangle rectangle, String image) {
 	super(rectangle);
-	this.image = new Texture(image+"/photo_small.png", new Point(760, 648));
+	this.image = new Texture(resolveImage(image), new Point(760, 648));
     }
 
     public Texture getImage() {
@@ -17,8 +21,17 @@ public class BoiteImage extends Boite{
     }
 
     public void setImage(String chemin) {
-	this.image.setImg(chemin+"/photo_small.png");
-	//this.image.setTaille(400, 320);
+    this.image.setImg(resolveImage(chemin));
+    //this.image.setTaille(400, 320);
+    }
+
+    private static String resolveImage(String basePath) {
+    String candidate = basePath + "/photo_small.png";
+    if (new File(candidate).exists()) {
+        return candidate;
+    }
+    System.err.println("photo_small.png manquante pour: " + basePath);
+    return PLACEHOLDER;
     }
 
 }
