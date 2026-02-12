@@ -5,11 +5,22 @@ Configuration du jeu Tron
 """
 
 # Dimensions de l'écran
-SCREEN_WIDTH = 1024
-SCREEN_HEIGHT = 768
+import os
+try:
+    import pygame
+    if not pygame.display.get_init():
+        pygame.display.init()
+    info = pygame.display.Info()
+    _w = info.current_w or 1024
+    _h = info.current_h or 768
+except Exception:
+    _w, _h = 1024, 768
+
+SCREEN_WIDTH = int(os.getenv("ARCADE_WIDTH", _w))
+SCREEN_HEIGHT = int(os.getenv("ARCADE_HEIGHT", _h))
 FPS = 60
 TITLE = "TRON - Arcade Game"
-FULLSCREEN = True  # Mode plein écran pour borne d'arcade (F11 pour basculer)
+FULLSCREEN = os.getenv("ARCADE_FULLSCREEN", "1") == "1"  # Mode plein écran pour borne d'arcade (F11 pour basculer)
 
 # Paramètres du jeu
 GRID_SIZE = 10  # Taille d'une cellule en pixels

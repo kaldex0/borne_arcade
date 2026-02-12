@@ -1,12 +1,26 @@
 # config.py
 
+import os
 import pygame
 
 # === Fenêtre ===
-SCREEN_WIDTH = 1280
-SCREEN_HEIGHT = 960
+def _detect_screen():
+	width = int(os.getenv("ARCADE_WIDTH", "0"))
+	height = int(os.getenv("ARCADE_HEIGHT", "0"))
+
+	if width <= 0 or height <= 0:
+		if not pygame.display.get_init():
+			pygame.display.init()
+		info = pygame.display.Info()
+		width = info.current_w or 1280
+		height = info.current_h or 960
+
+	return width, height
+
+
+SCREEN_WIDTH, SCREEN_HEIGHT = _detect_screen()
 FPS = 60
-FULLSCREEN = True
+FULLSCREEN = os.getenv("ARCADE_FULLSCREEN", "1") == "1"
 
 # === Affichage ===
 BACKGROUND_COLOR = (0, 0, 0)

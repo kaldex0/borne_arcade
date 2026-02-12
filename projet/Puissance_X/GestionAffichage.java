@@ -28,9 +28,12 @@ class GestionAffichage {
     public final MenuFinPartie menuFinPartie;
 
     public GestionAffichage(String titre) {
-	//int longueur = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0].getDisplayMode().getWidth(),
-	//largeur = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0].getDisplayMode().getHeight();
-	int longueur=1280,largeur=1024;
+	int longueur = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0].getDisplayMode().getWidth();
+	int largeur = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0].getDisplayMode().getHeight();
+	if (longueur <= 0 || largeur <= 0) {
+	    longueur = 1280;
+	    largeur = 1024;
+	}
 	this.continuer = true;
 	this.surface = new Zone(0, 0, longueur, largeur);
 	this.fenetre = new Fenetre(titre, longueur, largeur);

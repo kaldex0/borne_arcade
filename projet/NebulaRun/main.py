@@ -1,3 +1,4 @@
+import os
 import sys
 import random
 import time
@@ -42,7 +43,13 @@ def reset_state():
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    global WIDTH, HEIGHT
+    info = pygame.display.Info()
+    WIDTH = int(os.getenv("ARCADE_WIDTH", info.current_w or WIDTH))
+    HEIGHT = int(os.getenv("ARCADE_HEIGHT", info.current_h or HEIGHT))
+    fullscreen = os.getenv("ARCADE_FULLSCREEN", "1") == "1"
+    flags = pygame.FULLSCREEN if fullscreen else 0
+    screen = pygame.display.set_mode((WIDTH, HEIGHT), flags)
     pygame.display.set_caption("NebulaRun")
     clock = pygame.time.Clock()
 

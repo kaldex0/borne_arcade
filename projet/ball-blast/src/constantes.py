@@ -1,8 +1,23 @@
+import os
 import pygame.font
+import pygame.display
 
 # Screen dimensions
-SCREEN_WIDTH = 1240 #1024 
-SCREEN_HEIGHT = 1024 #768 
+def _detect_screen():
+	width = int(os.getenv("ARCADE_WIDTH", "0"))
+	height = int(os.getenv("ARCADE_HEIGHT", "0"))
+
+	if width <= 0 or height <= 0:
+		if not pygame.display.get_init():
+			pygame.display.init()
+		info = pygame.display.Info()
+		width = info.current_w or 1240
+		height = info.current_h or 1024
+
+	return width, height
+
+
+SCREEN_WIDTH, SCREEN_HEIGHT = _detect_screen()
 
 # Colors
 WHITE = (255, 255, 255)

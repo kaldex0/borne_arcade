@@ -14,7 +14,8 @@ os.environ['SDL_VIDEO_CENTERED'] = '1'
 
 # Set up the display
 pygame.display.set_caption("Ball Blast")
-screen: pygame.Surface = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+flags = pygame.FULLSCREEN if os.getenv("ARCADE_FULLSCREEN", "1") == "1" else 0
+screen: pygame.Surface = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), flags)
 
 # Game loop
 running = True
