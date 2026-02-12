@@ -196,27 +196,33 @@ public class BoiteDescription extends Boite{
 	
     public void lireBouton(String path){
 	//System.out.println(path);
-	String fichier =path+"/bouton.txt";
-		
+	String fichier = path + "/bouton.txt";
+
+	String[] values = new String[] {"JOYSTICK", "A", "B", "C", "D", "E", "F"};
+
 	//lecture du fichier texte	
 	try{
-	    InputStream ips=new FileInputStream(fichier); 
-	    InputStreamReader ipsr=new InputStreamReader(ips);
-	    BufferedReader br=new BufferedReader(ipsr);
-	    String ligne;
-	    ligne = br.readLine();
-	    if(ligne == null){
-		System.err.println("le fichier bouton est surement vide!");
-	    }else{
-		texteBouton = ligne.split(":");
-		//changer le texte des boutons
-		settJoystick(texteBouton[0]);
-		for(int i = 0 ; i < 6 ; i++){
-		    settBouton(texteBouton[i+1], i);
-		}				
+	    InputStream ips = new FileInputStream(fichier); 
+	    InputStreamReader ipsr = new InputStreamReader(ips);
+	    BufferedReader br = new BufferedReader(ipsr);
+	    String ligne = br.readLine();
+	    if (ligne != null && !ligne.trim().isEmpty()) {
+		String[] parts = ligne.split(":");
+		for (int i = 0; i < parts.length && i < values.length; i++) {
+		    values[i] = parts[i];
+		}
 	    }
-	}catch(Exception e){System.err.println(e);};
-		
+	    br.close();
+	}catch(Exception e){
+	    System.err.println(e);
+	};
+
+	//changer le texte des boutons
+	settJoystick(values[0]);
+	for(int i = 0 ; i < 6 ; i++){
+	    settBouton(values[i+1], i);
+	}
+
     }
 	
     public Texte[] getMessage(){
