@@ -75,12 +75,18 @@ class TronGame:
                 if event.type == pygame.QUIT:
                     self.running = False
                 elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE or event.key == pygame.K_f:  # ESCAPE ou touche f
+                    if event.key == pygame.K_ESCAPE:
                         if self.current_state in ["game", "options", "score_screen"]:
                             self.current_state = "menu"
                             self.play_music("./assets/sounds/music_menu.wav")
                         else:
                             self.running = False
+                    elif event.key == pygame.K_f:
+                        if self.current_state == "menu":
+                            self.running = False
+                        elif self.current_state in ["options", "score_screen"]:
+                            self.current_state = "menu"
+                            self.play_music("./assets/sounds/music_menu.wav")
                     # Fonctionnalité de plein écran retirée
 
                 # Transmettre les événements à l'état courant
