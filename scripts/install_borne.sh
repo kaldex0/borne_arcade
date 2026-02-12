@@ -20,6 +20,9 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 # 1) Dépendances système
 "$SCRIPT_DIR/setup_rpi_os.sh"
 
+# 1b) Layout clavier borne
+"$SCRIPT_DIR/install_keyboard_layout.sh"
+
 # 2) Installation du service systemd
 "$SCRIPT_DIR/install_systemd.sh"
 

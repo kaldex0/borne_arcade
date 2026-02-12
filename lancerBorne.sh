@@ -29,7 +29,7 @@ if ! MG2D_DIR="$(resolve_mg2d)"; then
 fi
 
 if ! setxkbmap borne; then
-    echo "Avertissement: layout 'borne' introuvable."
+    echo "Avertissement: layout 'borne' introuvable. Lancez scripts/install_keyboard_layout.sh en root." >&2
 fi
 
 cd "$REPO_ROOT"

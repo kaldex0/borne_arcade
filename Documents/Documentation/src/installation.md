@@ -114,6 +114,14 @@ Option B – Systemd (recommandé)
 sudo ~/git/borne_arcade/scripts/install_systemd.sh
 ```
 
+## Layout clavier borne
+
+Si vous voyez l'erreur "layout 'borne' introuvable" :
+
+```
+sudo ~/git/borne_arcade/scripts/install_keyboard_layout.sh
+```
+
 ## Automatisation de l'installation
 
 Une installation complète (dépendances, service systemd, hook git, compilation) :
