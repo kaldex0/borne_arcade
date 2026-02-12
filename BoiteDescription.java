@@ -61,40 +61,40 @@ public class BoiteDescription extends Boite{
 	texteBouton = new String[7];
 		
 	//declaration des texture bouton + joystick
-	this.joystick = new Texture("img/joystick2.png", new Point(740, 100), 40,40);
+	this.joystick = new Texture("img/joystick2.png", new Point(Graphique.sx(740), Graphique.sy(100)), Graphique.sw(40), Graphique.sh(40));
 	for(int i = 0 ; i < 3 ; i++){
-	    this.bouton[i] = new Texture("img/ibouton2.png", new Point(890+130*i, 130), 40, 40);
+	    this.bouton[i] = new Texture("img/ibouton2.png", new Point(Graphique.sx(890+130*i), Graphique.sy(130)), Graphique.sw(40), Graphique.sh(40));
 	}
 	for(int i = 3 ; i < 6 ; i++){
-	    this.bouton[i] = new Texture("img/ibouton2.png", new Point(890+130*(i-3), 50), 40, 40);
+	    this.bouton[i] = new Texture("img/ibouton2.png", new Point(Graphique.sx(890+130*(i-3)), Graphique.sy(50)), Graphique.sw(40), Graphique.sh(40));
 	}
 	
 	//declaration des textes bouton + joystick
-	this.tJoystick = new Texte(Couleur .NOIR, "...", font1, new Point(760, 80));
+	this.tJoystick = new Texte(Couleur .NOIR, "...", font1, new Point(Graphique.sx(760), Graphique.sy(80)));
 	for(int i = 0 ; i < 3 ; i++){
-	    this.tBouton[i] = new Texte(Couleur .NOIR, "...", font1, new Point(910+130*i, 120));
+	    this.tBouton[i] = new Texte(Couleur .NOIR, "...", font1, new Point(Graphique.sx(910+130*i), Graphique.sy(120)));
 	}
 	for(int i = 3 ; i < 6 ; i++){
-	    this.tBouton[i] = new Texte(Couleur .NOIR, "...", font1, new Point(910+130*(i-3), 40));
+	    this.tBouton[i] = new Texte(Couleur .NOIR, "...", font1, new Point(Graphique.sx(910+130*(i-3)), Graphique.sy(40)));
 	}
 	stop = false;
 	message = new Texte[10];
 	for(int i = 0 ; i < message.length ; i++){
-	    message[i] = new Texte(Couleur .NOIR, "", font2, new Point(960, 590));
-	    message[i].translater(0, -i*30);
+	    message[i] = new Texte(Couleur .NOIR, "", font2, new Point(Graphique.sx(960), Graphique.sy(590)));
+	    message[i].translater(0, -i * Graphique.sh(30));
 
 	}
 	nombreLigne = 0;
 
-	highscore = new Texte(Couleur.NOIR, "HIGHSCORE", font3, new Point(960, 335));
+	highscore = new Texte(Couleur.NOIR, "HIGHSCORE", font3, new Point(Graphique.sx(960), Graphique.sy(335)));
 	listeHighScore = new Texte[10];
 	for(int i=0;i<5;i++){
-	    listeHighScore[i] = new Texte(Couleur.NOIR, "", font4, new Point(820,310));
-	    listeHighScore[i].translater(0,-i*25);
+	    listeHighScore[i] = new Texte(Couleur.NOIR, "", font4, new Point(Graphique.sx(820), Graphique.sy(310)));
+	    listeHighScore[i].translater(0, -i * Graphique.sh(25));
 	}
 	for(int i=5;i<10;i++){
-	    listeHighScore[i] = new Texte(Couleur.NOIR, "", font4, new Point(1100,310));
-	    listeHighScore[i].translater(0,-(i-5)*25);
+	    listeHighScore[i] = new Texte(Couleur.NOIR, "", font4, new Point(Graphique.sx(1100), Graphique.sy(310)));
+	    listeHighScore[i].translater(0, -(i - 5) * Graphique.sh(25));
 	}
 	
 	

@@ -13,7 +13,7 @@ public class BoiteImage extends Boite{
 
     BoiteImage(Rectangle rectangle, String image) {
 	super(rectangle);
-	this.image = new Texture(resolveImage(image), new Point(760, 648));
+	this.image = new Texture(resolveImage(image), new Point(Graphique.sx(760), Graphique.sy(648)));
     }
 
     public Texture getImage() {

@@ -49,15 +49,15 @@ public class BoiteSelection extends Boite{
 		if(pointeur.getValue() == Graphique.tableau.length -1){
 			pointeur.setValue(0);
 				for(int i = 0 ; i < Graphique.tableau.length ; i++){
-					Graphique.tableau[i].getTexte().translater(0, 110*(Graphique.tableau.length -1));
-					Graphique.tableau[i].getTexture().translater(0, 110*(Graphique.tableau.length -1));
+					Graphique.tableau[i].getTexte().translater(0, Graphique.sh(110) * (Graphique.tableau.length -1));
+					Graphique.tableau[i].getTexture().translater(0, Graphique.sh(110) * (Graphique.tableau.length -1));
 					Graphique.tableau[i].getTexte().setPolice(font);
 					Graphique.tableau[i].getTexte().setCouleur(Couleur.BLANC);
 				}
 		}else{
 			for(int i = 0 ; i < Graphique.tableau.length ; i++){
-				Graphique.tableau[i].getTexte().translater(0, -110);
-				Graphique.tableau[i].getTexture().translater(0, -110);
+				Graphique.tableau[i].getTexte().translater(0, -Graphique.sh(110));
+				Graphique.tableau[i].getTexture().translater(0, -Graphique.sh(110));
 				Graphique.tableau[i].getTexte().setPolice(font);
 				Graphique.tableau[i].getTexte().setCouleur(Couleur.BLANC);
 			}
@@ -83,16 +83,16 @@ public class BoiteSelection extends Boite{
 			if(pointeur.getValue() == 0){
 				pointeur.setValue(Graphique.tableau.length-1);	
 				for(int i = 0 ; i < Graphique.tableau.length ; i++){
-					Graphique.tableau[i].getTexte().translater(0, -110*(Graphique.tableau.length-1));
-					Graphique.tableau[i].getTexture().translater(0, -110*(Graphique.tableau.length-1));
+					Graphique.tableau[i].getTexte().translater(0, -Graphique.sh(110) * (Graphique.tableau.length-1));
+					Graphique.tableau[i].getTexture().translater(0, -Graphique.sh(110) * (Graphique.tableau.length-1));
 					Graphique.tableau[i].getTexte().setPolice(font);
 					Graphique.tableau[i].getTexte().setCouleur(Couleur.BLANC);
 						
 				}
 			}else{
 				for(int i = 0 ; i < Graphique.tableau.length ; i++){
-					Graphique.tableau[i].getTexte().translater(0, 110);
-					Graphique.tableau[i].getTexture().translater(0, 110);
+					Graphique.tableau[i].getTexte().translater(0, Graphique.sh(110));
+					Graphique.tableau[i].getTexture().translater(0, Graphique.sh(110));
 					Graphique.tableau[i].getTexte().setPolice(font);
 					Graphique.tableau[i].getTexte().setCouleur(Couleur.BLANC);
 						

@@ -44,11 +44,11 @@ public class Bouton {
 	try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(yourPath)) {
 	    int i = Graphique.tableau.length - 1;
 	    for (Path path : directoryStream) {
-		Graphique.tableau[i].setTexte(new Texte(Couleur .NOIR, path.getFileName().toString(), new Font("Calibri", Font.TYPE1_FONT, 30), new Point(310, 510)));
-		Graphique.tableau[i].setTexture(new Texture("img/bouton2.png", new Point(100, 478), 400, 65));
+		Graphique.tableau[i].setTexte(new Texte(Couleur .NOIR, path.getFileName().toString(), new Font("Calibri", Font.TYPE1_FONT, 30), new Point(Graphique.sx(310), Graphique.sy(510))));
+		Graphique.tableau[i].setTexture(new Texture("img/bouton2.png", new Point(Graphique.sx(100), Graphique.sy(478)), Graphique.sw(400), Graphique.sh(65)));
 		for(int j=0;j<Graphique.tableau.length-(i+1);j++){
-		    Graphique.tableau[i].getTexte().translater(0,-110);
-		    Graphique.tableau[i].getTexture().translater(0,-110);
+		    Graphique.tableau[i].getTexte().translater(0, -Graphique.sh(110));
+		    Graphique.tableau[i].getTexture().translater(0, -Graphique.sh(110));
 		}
 		Graphique.tableau[i].setChemin("projet/"+path.getFileName().toString());
 		Graphique.tableau[i].setNom(path.getFileName().toString());

@@ -14,8 +14,16 @@ import MG2D.FenetrePleinEcran;
 
 public class Graphique {
 
-    //private final Fenetre f;
-    private static final FenetrePleinEcran f = new FenetrePleinEcran("_Menu Borne D'arcade_");
+	private static final int BASE_W = 1280;
+	private static final int BASE_H = 1024;
+	private static final int SCREEN_W;
+	private static final int SCREEN_H;
+	private static final double SCALE;
+	private static final int OFFSET_X;
+	private static final int OFFSET_Y;
+
+	//private final Fenetre f;
+	private static final FenetrePleinEcran f = new FenetrePleinEcran("_Menu Borne D'arcade_");
     private int TAILLEX;
     private int TAILLEY;
     private ClavierBorneArcade clavier;
@@ -32,11 +40,50 @@ public class Graphique {
 	private static int cptMus;
 
 
-    public Graphique(){
+	static {
+		GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		int width = device.getDisplayMode().getWidth();
+		int height = device.getDisplayMode().getHeight();
+
+		if (width <= 0 || height <= 0) {
+			width = BASE_W;
+			height = BASE_H;
+		}
+
+		SCREEN_W = width;
+		SCREEN_H = height;
+
+		double sx = SCREEN_W / (double) BASE_W;
+		double sy = SCREEN_H / (double) BASE_H;
+		SCALE = Math.min(sx, sy);
+
+		int viewW = (int) Math.round(BASE_W * SCALE);
+		int viewH = (int) Math.round(BASE_H * SCALE);
+		OFFSET_X = (SCREEN_W - viewW) / 2;
+		OFFSET_Y = (SCREEN_H - viewH) / 2;
+	}
+
+	public static int sx(int x) {
+		return OFFSET_X + (int) Math.round(x * SCALE);
+	}
+
+	public static int sy(int y) {
+		return OFFSET_Y + (int) Math.round(y * SCALE);
+	}
+
+	public static int sw(int w) {
+		return (int) Math.round(w * SCALE);
+	}
+
+	public static int sh(int h) {
+		return (int) Math.round(h * SCALE);
+	}
+
+	public Graphique(){
     	
 
-	TAILLEX = 1280;
-	TAILLEY = 1024;
+	TAILLEX = sw(BASE_W);
+	TAILLEY = sh(BASE_H);
 
 	font = null;
 	try{
@@ -72,17 +119,17 @@ public class Graphique {
 	
 	Bouton.remplirBouton();
 	pointeur = new Pointeur();
-	bs = new BoiteSelection(new Rectangle(Couleur .GRIS_CLAIR, new Point(0, 0), new Point(640, TAILLEY), true), pointeur);
+	bs = new BoiteSelection(new Rectangle(Couleur .GRIS_CLAIR, new Point(sx(0), sy(0)), new Point(sx(640), sy(BASE_H)), true), pointeur);
 	//f.ajouter(bs.getRectangle());
 	//System.out.println(tableau[pointeur.getValue()].getChemin());
-	bi = new BoiteImage(new Rectangle(Couleur .GRIS_FONCE, new Point(640, 512), new Point(TAILLEX, TAILLEY), true), new String(tableau[pointeur.getValue()].getChemin()));
+	bi = new BoiteImage(new Rectangle(Couleur .GRIS_FONCE, new Point(sx(640), sy(512)), new Point(sx(BASE_W), sy(BASE_H)), true), new String(tableau[pointeur.getValue()].getChemin()));
 	//f.ajouter(bi.getRectangle());
-	bd = new BoiteDescription(new Rectangle(Couleur .GRIS, new Point(640, 0), new Point(TAILLEX, 512), true));
+	bd = new BoiteDescription(new Rectangle(Couleur .GRIS, new Point(sx(640), sy(0)), new Point(sx(BASE_W), sy(512)), true));
 	bd.lireFichier(tableau[pointeur.getValue()].getChemin());
 	bd.lireHighScore(tableau[pointeur.getValue()].getChemin());
 	//f.ajouter(bd.getRectangle());
 
-	Texture fond = new Texture("img/fondretro3.png", new Point(0, 0), TAILLEX, TAILLEY);
+	Texture fond = new Texture("img/fondretro3.png", new Point(0, 0), SCREEN_W, SCREEN_H);
 	f.ajouter(fond);
 	//ajout apres fond car bug graphique sinon
 	f.ajouter(bi.getImage());
@@ -111,9 +158,9 @@ public class Graphique {
 	    f.ajouter(bd.gettBouton()[i]);
 	}
 	f.ajouter(bd.gettJoystick());
-	f.ajouter(new Ligne(Couleur.NOIR,new Point(670,360), new Point(1250,360)));
-	f.ajouter(new Ligne(Couleur.NOIR,new Point(670,190), new Point(1250,190)));
-	f.ajouter(new Ligne(Couleur.NOIR,new Point(960,210), new Point(960,310)));
+	f.ajouter(new Ligne(Couleur.NOIR,new Point(sx(670), sy(360)), new Point(sx(1250), sy(360))));
+	f.ajouter(new Ligne(Couleur.NOIR,new Point(sx(670), sy(190)), new Point(sx(1250), sy(190))));
+	f.ajouter(new Ligne(Couleur.NOIR,new Point(sx(960), sy(210)), new Point(sx(960), sy(310))));
 	f.ajouter(bd.getHighscore());
 	for(int i = 0 ; i < bd.getListeHighScore().length ; i++){
 	    f.ajouter(bd.getListeHighScore()[i]);
@@ -155,12 +202,12 @@ public class Graphique {
 
     public void selectionJeu(){	
 		Texture fondBlancTransparent = new Texture("./img/blancTransparent.png", new Point(0,0));
-		Rectangle boutonNon = new Rectangle(Couleur.ROUGE, new Point(340, 600), 200, 100, true);
-		Rectangle boutonOui = new Rectangle(Couleur.VERT, new Point(740, 600), 200, 100, true);
-		Texte message = new Texte(Couleur.NOIR, "Voulez vous vraiment quitter ?", font, new Point(640, 800));
-		Texte non = new Texte(Couleur.NOIR, "NON", font, new Point(440, 650));
-		Texte oui = new Texte(Couleur.NOIR, "OUI", font, new Point(840, 650));
-		Rectangle rectSelection = new Rectangle(Couleur.BLEU, new Point(330,590),220,120, true);
+		Rectangle boutonNon = new Rectangle(Couleur.ROUGE, new Point(sx(340), sy(600)), sw(200), sh(100), true);
+		Rectangle boutonOui = new Rectangle(Couleur.VERT, new Point(sx(740), sy(600)), sw(200), sh(100), true);
+		Texte message = new Texte(Couleur.NOIR, "Voulez vous vraiment quitter ?", font, new Point(sx(640), sy(800)));
+		Texte non = new Texte(Couleur.NOIR, "NON", font, new Point(sx(440), sy(650)));
+		Texte oui = new Texte(Couleur.NOIR, "OUI", font, new Point(sx(840), sy(650)));
+		Rectangle rectSelection = new Rectangle(Couleur.BLEU, new Point(sx(330), sy(590)), sw(220), sh(120), true);
 		int frame=0;
 		boolean fermetureMenu=false;
 		int selectionSur = 0;
@@ -247,12 +294,12 @@ public class Graphique {
 					   
 					
 					if(selectionSur==0){
-						rectSelection.setA(new Point(330,590));
-						rectSelection.setB(new Point(550,710));
+						rectSelection.setA(new Point(sx(330), sy(590)));
+						rectSelection.setB(new Point(sx(550), sy(710)));
 					}
 					else{
-						rectSelection.setB(new Point(950,710));
-						rectSelection.setA(new Point(730,590));
+						rectSelection.setB(new Point(sx(950), sy(710)));
+						rectSelection.setA(new Point(sx(730), sy(590)));
 						
 					}
 					if(clavier.getBoutonJ1ATape()){

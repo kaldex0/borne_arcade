@@ -15,10 +15,10 @@ public class Pointeur {
     private Texture rectangleCentre;
 
     public Pointeur(){
-	this.triangleGauche = new Texture("img/star.png", new Point(30, 492), 40,40);
+	this.triangleGauche = new Texture("img/star.png", new Point(Graphique.sx(30), Graphique.sy(492)), Graphique.sw(40), Graphique.sh(40));
 	// this.triangleDroite = new Triangle(Couleur .ROUGE, new Point(550, 560), new Point(520, 510), new Point(550, 460), true);
-	this.triangleDroite = new Texture("img/star.png", new Point(530, 492), 40,40);
-	this.rectangleCentre = new Texture("img/select2.png", new Point(80, 460), 440, 100);
+	this.triangleDroite = new Texture("img/star.png", new Point(Graphique.sx(530), Graphique.sy(492)), Graphique.sw(40), Graphique.sh(40));
+	this.rectangleCentre = new Texture("img/select2.png", new Point(Graphique.sx(80), Graphique.sy(460)), Graphique.sw(440), Graphique.sh(100));
 	this.value = Graphique.tableau.length-1;
     }
 
