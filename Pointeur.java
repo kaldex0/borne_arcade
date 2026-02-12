@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 
 import MG2D.geometrie.Texture;
@@ -25,13 +26,21 @@ public class Pointeur {
 	if(clavier.getBoutonJ1ATape()){
 
 	    //System.out.println(Graphique.tableau[getValue()].getChemin());
+	    String scriptName = "./" + Graphique.tableau[getValue()].getNom() + ".sh";
+	    File scriptFile = new File(scriptName);
+	    if (!scriptFile.exists()) {
+		System.err.println("Script introuvable: " + scriptName);
+		return;
+	    }
 	    try {
 		Graphique.stopMusiqueFond();
-		Process process = Runtime.getRuntime().exec("./"+Graphique.tableau[getValue()].getNom()+".sh");
-		process.waitFor();		//ajouté afin d'attendre la fin de l'exécution du jeu pour reprendre le contrôle sur le menu
+		ProcessBuilder builder = new ProcessBuilder("bash", scriptName);
+		builder.inheritIO();
+		Process process = builder.start();
+		process.waitFor();
+		//ajouté afin d'attendre la fin de l'exécution du jeu pour reprendre le contrôle sur le menu
 		Graphique.lectureMusiqueFond();
 	    } catch (IOException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	    } catch(Exception e){	//on catche toutes les exceptions, nécessaire pour le waitFor()
 			e.printStackTrace();
