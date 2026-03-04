@@ -7,9 +7,15 @@ from __future__ import annotations
 
 import argparse
 import os
+import sys
 from datetime import datetime
 from pathlib import Path
 from typing import List
+
+# Ensure repo root is on sys.path for local imports
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 from ollama_wrapper_iut import (
     OllamaWrapper,
@@ -19,7 +25,6 @@ from ollama_wrapper_iut import (
 )
 
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
 DOCS_ROOT = REPO_ROOT / "Documents" / "Documentation"
 SRC_DIR = DOCS_ROOT / "src"
 OUT_DIR = DOCS_ROOT / "generated"
