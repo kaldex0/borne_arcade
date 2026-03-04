@@ -54,3 +54,12 @@ if [[ -f "$REPO_ROOT/Documents/Documentation/doc_minimale.md" ]]; then
 fi
 
 echo "Documentation générée dans $OUT_DIR"
+
+# Option: générer un rapport IA via Ollama (si OLLAMA_RUN=1)
+if [[ "${OLLAMA_RUN:-0}" == "1" ]]; then
+  if command -v python3 >/dev/null 2>&1; then
+    python3 "$REPO_ROOT/scripts/ai_automation.py" --all || true
+  else
+    echo "python3 introuvable: IA non générée." >&2
+  fi
+fi
