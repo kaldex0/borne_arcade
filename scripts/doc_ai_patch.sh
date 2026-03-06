@@ -1,8 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-# Usage: DOC_AI=1 ./scripts/doc_ai_patch.sh
-# This script only proposes a patch; it never applies changes automatically.
+# Utilisation: DOC_AI=1 ./scripts/doc_ai_patch.sh
+# Ce script ne fait que proposer un patch; il n'applique jamais les changements automatiquement.
 
 if [[ "${DOC_AI:-}" != "1" ]]; then
   echo "DOC_AI=1 pour activer la generation de patch IA."

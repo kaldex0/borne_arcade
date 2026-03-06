@@ -10,7 +10,7 @@ class Tir{
     private String orientation;
 
     /*-----Constructeur-----*/
-    public Tir(){ // Défault
+    public Tir(){ // Par défaut
 	tex=new Texture("./img/laser/player1/1.png", new Point(0,0));
 	vit=1;
 	dmg=1;
@@ -25,7 +25,7 @@ class Tir{
     }
 
 
-    /*-----Get && Set-----*/
+    /*-----Accesseurs-----*/
     public int getVit(){
 	return vit;
     }

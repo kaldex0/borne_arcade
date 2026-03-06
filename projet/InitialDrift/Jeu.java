@@ -203,7 +203,7 @@ class Jeu{ // Définition de la classe
 	tabEnnemis = e;
     }
     
-    //score & gameover
+	// score et fin de partie
     public int getScore(){
 	return score;
     }

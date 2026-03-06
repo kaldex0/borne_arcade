@@ -11,7 +11,7 @@ class Bonus{
 
 
     /*-----Constructeur-----*/
-    public Bonus(){ // Défault
+    public Bonus(){ // Par défaut
 	tex=new Texture("./img/ennemie/ennemie1/1.png", new Point(0,0));
 	numBonus=0;
 	duree=0;
@@ -24,7 +24,7 @@ class Bonus{
     }
 
 
-    /*-----Get && Set-----*/
+    /*-----Accesseurs-----*/
     public int getNumBonus(){
 	return numBonus;
     }

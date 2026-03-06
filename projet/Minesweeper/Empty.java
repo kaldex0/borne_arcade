@@ -3,14 +3,14 @@ import MG2D.geometrie.Rectangle;
 import MG2D.geometrie.Texture;
 
 public class Empty implements Tile {
-    /* Attributes */
+    /* Attributs */
     private boolean masked;
     private boolean flag;
     private int x;
     private int y;
     private int nbNeighbours;
 
-    /* Builders */
+    /* Constructeurs */
     public Empty() {
         this.masked = true;
         this.flag = false;
@@ -33,7 +33,7 @@ public class Empty implements Tile {
     }
 
     /*
-     * Getters
+    * Accesseurs
      */
     public boolean getMasked() {
         return this.masked;
@@ -55,7 +55,7 @@ public class Empty implements Tile {
         return this.nbNeighbours;
     }
 
-    /* Setters */
+    /* Mutateurs */
     public void setMasked(boolean masked) {
         this.masked = masked;
     }
@@ -77,7 +77,7 @@ public class Empty implements Tile {
         this.y = y;
     }
 
-    /* Methods */
+    /* Methodes */
     public void discover(Board board) {
         this.masked = false;
         board.addDiscoveredTile(this);

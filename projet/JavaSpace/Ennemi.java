@@ -13,7 +13,7 @@ class Ennemi{
 
 
     /*-----Constructeur-----*/
-    public Ennemi(){ // Défault
+    public Ennemi(){ // Par défaut
 	tex=new Texture("./img/ennemie/ennemie1/1.png", new Point(0,0));
 	vit=0;
 	vie=0;
@@ -35,7 +35,7 @@ class Ennemi{
     }
 
 
-    /*-----Get && Set-----*/
+    /*-----Accesseurs-----*/
     public int getVit(){
 	return vit;
     }

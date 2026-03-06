@@ -367,10 +367,10 @@ public class Pong {
 			f.rafraichir();
     	    try {
 				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		    } catch (InterruptedException e) {
+			// A FAIRE : bloc catch genere automatiquement
+			e.printStackTrace();
+		    }
     	    generateMenu();
     	    this.status=0;
     	    
@@ -381,10 +381,10 @@ public class Pong {
 			f.rafraichir();
     	    try {
 				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		    } catch (InterruptedException e) {
+			// A FAIRE : bloc catch genere automatiquement
+			e.printStackTrace();
+		    }
     	    generateMenu();
     	    this.status=0;
     	}

@@ -28,7 +28,7 @@ public class Minesweeper {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            // TODO : Menu
+            // A FAIRE : Menu
             if (menu == 1) {
                 // exit
                 if (keyboard.getBoutonJ1XTape()) {
@@ -45,7 +45,7 @@ public class Minesweeper {
                 if (keyboard.getBoutonJ1CTape()) {
                     System.out.println("Menu : " + m.mg.menu.getPos());
                     if (m.mg.menu.getPos() == 0) {
-                        menu = 2; // change to game
+                        menu = 2; // passer au jeu
                         m.board = new Board(m.level.getWidth(), m.level.getHeight(),
                                 m.level.getNbBombs());
                         m.board.neighbourhood();
@@ -60,11 +60,11 @@ public class Minesweeper {
                         // m.level.getWidthWindow(), m.level.getHeightWindow());
                         // m.window.rafraichir();
                     } else if (m.mg.menu.getPos() == 1) {
-                        menu = 3; // change to scores
+                        menu = 3; // passer aux scores
                         m.mg.openScore(m.window, m.level.getWidthWindow(), m.level.getHeightWindow());
                         m.window.rafraichir();
                     } else if (m.mg.menu.getPos() == 2) {
-                        menu = 4; // change to rules
+                        menu = 4; // passer aux regles
                         m.mg.openRules(m.window, m.level.getWidthWindow(), m.level.getHeightWindow());
                         m.window.rafraichir();
                     } else if (m.mg.menu.getPos() == 3) {
@@ -72,7 +72,7 @@ public class Minesweeper {
                     }
                 }
             } else if (menu == 2) {
-                // Game
+                // Jeu
                 if (!m.end) {
                     if (keyboard.getBoutonJ1XTape()) {
                         menu = 1;
@@ -80,7 +80,7 @@ public class Minesweeper {
                                 m.level.getWidthWindow(), m.level.getHeightWindow());
                         m.window.rafraichir();
                     }
-                    // change to dig button
+                    // passer au bouton creuser
                     if (keyboard.getBoutonJ1ATape()) {
                         if (m.button instanceof Flag) {
                             m.button = new Dig(true);
@@ -88,7 +88,7 @@ public class Minesweeper {
                             m.window.rafraichir();
                         }
                     }
-                    // change to flag button
+                    // passer au bouton drapeau
                     if (keyboard.getBoutonJ1BTape()) {
                         if (m.button instanceof Dig) {
                             m.button = new Flag(true);
@@ -96,7 +96,7 @@ public class Minesweeper {
                             m.window.rafraichir();
                         }
                     }
-                    // move
+                    // deplacement
                     if (keyboard.getJoyJ1HautTape()) {
                         if (m.cursor.getY() < Constants.sizeTile * (Constants.height - 1)) {
                             m.cursor.moveUp();
@@ -125,7 +125,7 @@ public class Minesweeper {
                         }
                         m.window.rafraichir();
                     }
-                    // Dig or flag
+                    // Creuser ou drapeau
                     if (keyboard.getBoutonJ1CTape()) {
                         m.board.action(m.cursor.getX(), m.cursor.getY(), m.button, m.level.getSizeTile());
                         m.mg.update(m.window, m.board);
@@ -148,8 +148,8 @@ public class Minesweeper {
                         m.window.rafraichir();
                     }
                 } else {
-                    // End of the game
-                    // TODO score / replay
+                    // Fin de la partie
+                    // A FAIRE : score / rejouer
                     if (keyboard.getBoutonJ1CTape()) {
                         m.board = new Board(m.level.getWidth(), m.level.getHeight(),
                                 m.level.getNbBombs());
@@ -166,7 +166,7 @@ public class Minesweeper {
                     }
                 }
             } else if (menu == 3) {
-                // Back to menu
+                // Retour au menu
                 if (keyboard.getBoutonJ1XTape()) {
                     menu = 1;
                     m.mg.menu(m.window, m.level.getSizeTile(),
@@ -174,7 +174,7 @@ public class Minesweeper {
                     m.window.rafraichir();
                 }
             } else if (menu == 4) {
-                // Back to menu
+                // Retour au menu
                 if (keyboard.getBoutonJ1XTape()) {
                     menu = 1;
                     m.mg.menu(m.window, m.level.getSizeTile(),

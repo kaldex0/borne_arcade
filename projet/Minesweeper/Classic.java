@@ -50,7 +50,7 @@ public class Classic implements Theme {
 
     @Override
     public String getBackground() {
-        // return this.toString() + "/Minesweeper_background.png";
+        // retourner this.toString() + "/Minesweeper_background.png";
         return "assets/classic/Minesweeper_background.png";
     }
 

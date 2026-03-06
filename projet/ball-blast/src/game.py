@@ -35,7 +35,7 @@ class Game():
         self.path: str = "./assets/explosion_frames/frame-"
         self.perdu = False
 
-        # Initialize player, balls, and bullets
+        # Initialiser joueur, boules et projectiles
         self.player = Player()
         wheels = self.player.getWheels()
         self.playerGroup = pygame.sprite.Group()
@@ -96,10 +96,10 @@ class Game():
             self.all_sprites.add(bullet)
             self.bullets.add(bullet)
 
-        # Update
+        # Mise a jour
         self.all_sprites.update()
 
-        # Check for collisions
+        # Verifier les collisions
         hitBalls = pygame.sprite.groupcollide(
             self.balls, self.bullets, False, True)
         for hit in hitBalls:
@@ -137,9 +137,9 @@ class Game():
                     self.all_sprites.add(ball2)
                 hit.kill()
 
-        # Draw / render
+        # Dessin / rendu
 
-        # On render le fond en premier sinon tout est derrière
+        # On affiche le fond en premier sinon tout est derrière
         self.screen.blit(self.texture, (0,0))
 
         self.all_sprites.draw(self.screen)

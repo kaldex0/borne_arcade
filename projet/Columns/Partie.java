@@ -217,7 +217,7 @@ public class Partie {
 
         switch(statut){
             case MENU:
-                //TODO : Gérer menu partie!
+                //A FAIRE : Gérer menu partie!
                 //System.out.println("aaajeje");
                 this.jouerSon(NUMSTART);
                 statut =INTRO;
@@ -301,7 +301,7 @@ public class Partie {
 
                     case ATTENTE:
                         grille = puits.getGrille();
-                        //Vérification du GAME OVER
+                        //Vérification de la fin de partie
                         for(int i=0;i<Puits.LARGEUR;i++){
                             if(grille[i][13].getCouleur()>0){
                                 statut =GAMEOVER;
@@ -316,7 +316,7 @@ public class Partie {
                             if(nbGemmesSuppr>0){
                                 statutColone=COMBO;
                                 puits.setNumCombo(puits.getNumCombo()+1);
-                                //TODO : mettre le changement de score en tampon pour pouvoir l'afficher au dessus en rose
+                                //A FAIRE : mettre le changement de score en tampon pour pouvoir l'afficher au dessus en rose
                                // System.out.println("Avant : " + puits.getScoreTampon());
                                 puits.setScoreTampon(puits.getScoreTampon()+(puits.getNiveau()+1)*((int)(nbGemmesSuppr/3)+nbGemmesSuppr%3)*VARSCORE);
                                 //System.out.println("SCORE TAMPON" + puits.getScoreTampon());
@@ -325,7 +325,7 @@ public class Partie {
 
                                 if(puits.getNiveau()!=niveau){
                                     System.out.println("levelup");
-                                    //TODO : jouer son level up!
+                                    //A FAIRE : jouer le son de montée de niveau!
                                     jouerSon(NUMLEVEL);
                                 }
 
@@ -366,7 +366,7 @@ public class Partie {
 
                 break;
             case GAMEOVER:
-		//TODO: classe high score pour le jeu!!!
+        //A FAIRE : classe meilleur score pour le jeu!!!
                 break;
         }
 
@@ -395,8 +395,8 @@ public class Partie {
     }
 
 
-    //TODO: FONCTION JOUER SON!!!
-    //TODO: si un son doit jouer alors qu'il est en lecture, alors on arrête le précédent pour jouer le nouveau!
+    //A FAIRE : FONCTION JOUER SON!!!
+    //A FAIRE : si un son doit jouer alors qu'il est en lecture, alors on arrête le précédent pour jouer le nouveau!
     public void arretSon(int i){
         if(this.enLecture[i]){
             if(this.tempsJoue[i]>=this.tempsMax[i]){

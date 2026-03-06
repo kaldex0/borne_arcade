@@ -6,18 +6,18 @@ import pygame
 import random
 import os
 
-# Initialize Pygame
+# Initialiser Pygame
 pygame.init()
 pygame.mixer.init()
 
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 
-# Set up the display
+# Configurer l'affichage
 pygame.display.set_caption("Ball Blast")
 flags = pygame.FULLSCREEN if os.getenv("ARCADE_FULLSCREEN", "1") == "1" else 0
 screen: pygame.Surface = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), flags)
 
-# Game loop
+# Boucle de jeu
 running = True
 clock = pygame.time.Clock()
 

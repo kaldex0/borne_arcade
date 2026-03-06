@@ -2,33 +2,32 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- * Implements the KeyListener interface to handle keyboard events.
- * 
- * This class is designed to work with the MG2D library and is intended to
- * be used in conjunction with the Board class to manage keyboard input
- * for the game.
- * 
+ * Implante l'interface KeyListener pour gerer les evenements clavier.
+ *
+ * Cette classe est concue pour fonctionner avec MG2D et etre utilisee
+ * avec la classe Board pour gerer les entrees clavier du jeu.
+ *
  * Joysticks :
  * joyJ1
  * - joyJ1Up
  * - joyJ1Down
  * - joyJ1Left
  * - joyJ1Right
- * 
- * Buttons :
+ *
+ * Boutons :
  * ButtonJ1
- * (bottom)
- * - ButtonJ1A -> dig
- * - ButtonJ1B -> flag
+ * (bas)
+ * - ButtonJ1A -> creuser
+ * - ButtonJ1B -> drapeau
  * - ButtonJ1C
- * (top)
- * - ButtonJ1X -> back
- * - ButtonJ1Y -> difficulty
+ * (haut)
+ * - ButtonJ1X -> retour
+ * - ButtonJ1Y -> difficulte
  * - ButtonJ1Z
  */
 public class KeyboardArcade implements KeyListener {
 
-    // Attibutes
+    // Attributs
     private boolean up; // enfoncé
     private boolean upTrigger; // apputé puis relâché
     private boolean down;
@@ -52,7 +51,7 @@ public class KeyboardArcade implements KeyListener {
     private boolean buttonZTrigger;
 
     public KeyboardArcade() {
-        // Constructor
+        // Constructeur
         this.up = this.upTrigger = this.down = this.downTrigger = false;
         this.left = this.leftTrigger = this.right = this.rightTrigger = false;
 
@@ -161,7 +160,7 @@ public class KeyboardArcade implements KeyListener {
         return temp;
     }
 
-    // Methods
+    // Methodes
 
     public void reinitialize() {
         this.up = this.upTrigger = this.down = this.downTrigger = false;

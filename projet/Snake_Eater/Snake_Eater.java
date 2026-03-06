@@ -21,7 +21,7 @@ public class Snake_Eater {
     // Géometrie //
     private static Point a = new Point ( 10*tailleCarre,11*tailleCarre );
     private static Carre joueur = new Carre ( new Couleur ( 255, 200, 200 ), a, tailleCarre,true );
-    // Game Over & Statistique //
+	// Fin de partie et statistiques //
     private static Font calibri = new Font("Calibri", Font.TYPE1_FONT, 40);
     private static Rectangle bas = new Rectangle(Couleur.NOIR, new Point(0,0), largeur, 60, true);
     private static Rectangle gauche = new Rectangle(Couleur.NOIR, new Point(0,0), 60,hauteur, true);

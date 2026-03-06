@@ -11,7 +11,7 @@ public class Menu {
     private int pos = 0;
 
     Menu() {
-        // Constructor
+        // Constructeur
 
     }
 

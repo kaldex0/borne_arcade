@@ -56,7 +56,7 @@ public class Serpent {
     private void avaler ( Carre c ) {
 			serpent.add ( c );
 			c.setA(new Point(serpent.get(serpent.size() - 1).getA().getX(),serpent.get(serpent.size() - 1).getA().getY()));
-			//TODO Comprendre ce qu'il se passe quand on commente la ligne suivante
+			//A FAIRE : Comprendre ce qu'il se passe quand on commente la ligne suivante
 			c.setB(new Point(serpent.get(serpent.size() - 1).getB().getX(),serpent.get(serpent.size() - 1).getB().getY()));
 			nb++;
     }

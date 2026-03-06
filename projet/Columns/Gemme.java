@@ -25,7 +25,7 @@ public class Gemme {
     public static final Texture TEXBLEU=new Texture("img/game/gems/6.png", new Point());
 
 
-   //TODO : constructeur par copie de texture => oui
+    //A FAIRE : constructeur par copie de texture => oui
 
     private int couleur;
 
@@ -88,7 +88,7 @@ public class Gemme {
         Partie.ajouterTex((Dessin)(this.t));
     }
 
-    //TODO : utiliser la méthode déplacer afin d'économiser en ressources sur le f.ajouter!!!
+    //A FAIRE : utiliser la méthode déplacer afin d'économiser en ressources sur le f.ajouter!!!
     //EUH... C'est possible..?
     public void deplacer(int x, int y){
         this.t.translater(x,y);

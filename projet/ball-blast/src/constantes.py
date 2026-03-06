@@ -2,7 +2,7 @@ import os
 import pygame.font
 import pygame.display
 
-# Screen dimensions
+# Dimensions de l'ecran
 def _detect_screen():
 	width = int(os.getenv("ARCADE_WIDTH", "0"))
 	height = int(os.getenv("ARCADE_HEIGHT", "0"))
@@ -19,7 +19,7 @@ def _detect_screen():
 
 SCREEN_WIDTH, SCREEN_HEIGHT = _detect_screen()
 
-# Colors
+# Couleurs
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
@@ -39,6 +39,6 @@ FIRERATE = 7
 
 pygame.font.init()
 
-#Fonts
+# Polices
 FONT = pygame.font.SysFont('Comic Sans MS', 30)
 FONT_SCORE = pygame.font.SysFont('Comic Sans MS', 18)

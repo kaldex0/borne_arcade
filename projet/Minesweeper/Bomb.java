@@ -3,13 +3,13 @@ import MG2D.geometrie.Rectangle;
 import MG2D.geometrie.Texture;
 
 public class Bomb implements Tile {
-    /* Attributes */
+    /* Attributs */
     private boolean masked;
     private boolean flag;
     private int x;
     private int y;
 
-    /* Builders */
+    /* Constructeurs */
     public Bomb() {
         this.masked = true;
         this.flag = false;
@@ -31,7 +31,7 @@ public class Bomb implements Tile {
         this.flag = flag;
     }
 
-    /* Getters */
+    /* Accesseurs */
     public boolean getMasked() {
         return this.masked;
     }
@@ -48,7 +48,7 @@ public class Bomb implements Tile {
         return this.y;
     }
 
-    /* Setters */
+    /* Mutateurs */
     public void setMasked(boolean masked) {
         this.masked = masked;
     }
@@ -65,7 +65,7 @@ public class Bomb implements Tile {
         this.y = y;
     }
 
-    /* Methods */
+    /* Methodes */
     @Override
     public void discover(Board board) {
         this.masked = false;
@@ -105,7 +105,7 @@ public class Bomb implements Tile {
 
     @Override
     public int neighbour(Board board) {
-        // a bomb has no neighbours
+        // une bombe n'a pas de voisins
         return 0;
     }
 

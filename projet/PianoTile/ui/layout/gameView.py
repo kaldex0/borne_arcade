@@ -106,7 +106,7 @@ class GameView:
 
     def update(self):
         if self.__game_over:
-            return  # stop early si game over
+            return  # arret anticipe si fin de partie
 
         current_time = self.getCurrentTime()
 

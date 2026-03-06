@@ -51,8 +51,8 @@ public class Menu {
         this.statut=this.STATUTMENU;
 
         //Sert à définir un fond d'écran aléatoire parmi les deux du jeu d'origine!
-        //TODO : Faire alterner les fonds d'écran à coup sûr, comme dans le vrai jeu (?)
-        //TODO : Faire jaillir des gemmes de la bourse du premier fond d'écran (fresque)
+        //A FAIRE : Faire alterner les fonds d'écran à coup sûr, comme dans le vrai jeu (?)
+        //A FAIRE : Faire jaillir des gemmes de la bourse du premier fond d'écran (fresque)
         if((int)(Math.random()*2)==0)
             this.bg=new Texture("img/menu/bg1.png",new Point(0,0));
         else

@@ -89,7 +89,7 @@ public class Puits {
         this.niveau=0;
         this.gemmesSuppr=0;
 
-        //TODO: niveau + nb gemmes
+        //A FAIRE : niveau + nb gemmes
         if(this.numJoueur==1){
             this.xScore=600;
             this.yScore=489;
@@ -218,9 +218,9 @@ public class Puits {
     }
 
 
-    //TODO : vérification des combos pour chaque duo de coordonnées dans chaque direction
-    //TODO : on appelle la fonction la première fois avec un niveau de 1
-    //TODO : suppression pour les mêmes coordonnées et direction si niveau >=3
+    //A FAIRE : vérification des combos pour chaque duo de coordonnées dans chaque direction
+    //A FAIRE : on appelle la fonction la première fois avec un niveau de 1
+    //A FAIRE : suppression pour les mêmes coordonnées et direction si niveau >=3
     public int verification(){
         int res=0;
         for(int i=0;i<LARGEUR;i++){

@@ -92,7 +92,7 @@ class Game:
                 # Mettre en pause / reprendre
                 self.pause = not self.pause
             elif (event.key == pygame.K_SPACE or event.key == pygame.K_r) and self.game_over:
-                # Redémarrer après game over
+                # Redémarrer après fin de partie
                 self.__init__(self.screen, self.mode, self.difficulty)
             else:
                 # Entrées des joueurs

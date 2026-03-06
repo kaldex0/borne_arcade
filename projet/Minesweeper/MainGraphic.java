@@ -23,10 +23,10 @@ public class MainGraphic {
     public MainGraphic(Fenetre window, Board board, Button b, int sizeTile, int width, int height) {
 
         window.effacer();
-        // Background
+        // Fond
         window.ajouter(new Texture("./img/Minesweeper_background.png", new Point(0, 0), width, height));
 
-        // Board Game
+        // Plateau de jeu
         int x = board.getWidth();
         int y = board.getHeight();
         for (int i = 0; i < x; i++) {
@@ -38,7 +38,7 @@ public class MainGraphic {
                 }
             }
         }
-        // Buttons
+        // Boutons
         window.ajouter(new Texture("./img/Minesweeper_questionmark.png",
                 new Point(2 * sizeTile, height - 2 * sizeTile), sizeTile, sizeTile));
         window.ajouter(new Texture("./img/Minesweeper_flag.png",
@@ -46,17 +46,17 @@ public class MainGraphic {
                 sizeTile));
         window.ajouter(buttonSelect);
 
-        // Cursor
+        // Curseur
         window.ajouter(cursorTexture);
 
-        // Quit
+        // Quitter
         window.ajouter(new Texture("./img/Minesweeper_cross.png", new Point(0, height - sizeTile), sizeTile, sizeTile));
-        // Restart
+        // Recommencer
         window.ajouter(new Texture("./img/Minesweeper_arrow.png", new Point(width -
                 sizeTile, height - sizeTile),
                 sizeTile, sizeTile));
 
-        // Display the number of bombs
+        // Afficher le nombre de bombes
         window.ajouter(new Texture("./img/Minesweeper_bomb.png", new Point(width / 2 - sizeTile, height - sizeTile),
                 sizeTile, sizeTile));
         window.ajouter(new Texte(Couleur.ROUGE, new String("" + board.getNbBombs()), calibri,
@@ -67,10 +67,10 @@ public class MainGraphic {
 
     public void openAfterMenu(Fenetre window, Board board, Button b, int sizeTile, int width, int height) {
         window.effacer();
-        // Background
+        // Fond
         window.ajouter(new Texture("./img/Minesweeper_background.png", new Point(0, 0), width, height));
 
-        // Board Game
+        // Plateau de jeu
         int x = board.getWidth();
         int y = board.getHeight();
         for (int i = 0; i < x; i++) {
@@ -82,7 +82,7 @@ public class MainGraphic {
                 }
             }
         }
-        // Buttons
+        // Boutons
         window.ajouter(new Texture("./img/Minesweeper_questionmark.png",
                 new Point(2 * sizeTile, height - 2 * sizeTile), sizeTile, sizeTile));
         window.ajouter(new Texture("./img/Minesweeper_flag.png",
@@ -90,17 +90,17 @@ public class MainGraphic {
                 sizeTile));
         window.ajouter(buttonSelect);
 
-        // Cursor
+        // Curseur
         window.ajouter(cursorTexture);
 
-        // Quit
+        // Quitter
         window.ajouter(new Texture("./img/Minesweeper_cross.png", new Point(0, height - sizeTile), sizeTile, sizeTile));
-        // Restart
+        // Recommencer
         window.ajouter(new Texture("./img/Minesweeper_arrow.png", new Point(width -
                 sizeTile, height - sizeTile),
                 sizeTile, sizeTile));
 
-        // Display the number of bombs
+        // Afficher le nombre de bombes
         window.ajouter(new Texture("./img/Minesweeper_bomb.png", new Point(width / 2 - sizeTile, height - sizeTile),
                 sizeTile, sizeTile));
         window.ajouter(new Texte(Couleur.ROUGE, new String("" + board.getNbBombs()), calibri,
@@ -109,11 +109,11 @@ public class MainGraphic {
 
     public void openRules(Fenetre window, int width, int height) {
         window.effacer();
-        // Rules
+        // Regles
         window.ajouter(new Texture("./img/rules.png", new Point(0, 0), width, height));
     }
 
-    // Display the score view
+    // Afficher la vue des scores
     public void openScore(Fenetre window, int width, int height) {
 
         String scoreFileName = "highscores.txt";
@@ -141,20 +141,20 @@ public class MainGraphic {
     }
 
     /**
-     * Update the board of the game
-     * 
+     * Mettre a jour le plateau de jeu.
+     *
      * @param window
      * @param board
      */
     public void update(Fenetre window, Board board) {
         System.out.println("Update");
-        // Display discovered tiles
+        // Afficher les cases decouvertes
         for (Tile c : board.getDiscoveredTiles()) {
             window.ajouter(c.displayGraphic(Constants.sizeTile));
         }
         window.ajouter(cursorTexture);
         window.rafraichir();
-        // Clean list of discovered tiles
+        // Nettoyer la liste des cases decouvertes
         board.clearDiscoveredTiles();
     }
 
@@ -195,7 +195,7 @@ public class MainGraphic {
 
     public MinesweeperView menuOnClick(int x, int y, MinesweeperView m) {
         MinesweeperView ms = m;
-        // Easy Button
+        // Bouton facile
         if (x > m.level.getWidthWindow() - 2 * m.level.getSizeTile()
                 && x < m.level.getWidthWindow() - m.level.getSizeTile() &&
                 y > m.level.getHeightWindow() - 2 * m.level.getSizeTile() &&
@@ -203,7 +203,7 @@ public class MainGraphic {
             m.window.fermer();
             ms = new Easy().onClick();
         }
-        // Medium Button
+        // Bouton moyen
         if (x > m.level.getWidthWindow() - 2 * m.level.getSizeTile()
                 && x < m.level.getWidthWindow() - m.level.getSizeTile() &&
                 y > m.level.getHeightWindow() - 5 * m.level.getSizeTile() &&
@@ -211,7 +211,7 @@ public class MainGraphic {
             m.window.fermer();
             ms = new Medium().onClick();
         }
-        // Hard Button
+        // Bouton difficile
         if (x > m.level.getWidthWindow() - 2 * m.level.getSizeTile()
                 && x < m.level.getWidthWindow() - m.level.getSizeTile() &&
                 y > m.level.getHeightWindow() - 8 * m.level.getSizeTile() &&

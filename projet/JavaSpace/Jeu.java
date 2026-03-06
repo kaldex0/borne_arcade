@@ -22,7 +22,7 @@ class Jeu{
 
     public static final int VIEBOSS=50;
 
-    //TODO : ajuster temps phase!!!
+	//A FAIRE : ajuster temps phase!!!
     public static final int TEMPSPHASE=1500;
 
 
@@ -289,7 +289,7 @@ public Jeu(){
 	int zoneApparitionEnnemi=0;
 
 	/*------------------------------*/
-	/*----------BACKGROUND----------*/
+	/*-------------FOND-------------*/
 	/*------------------------------*/
 	
 	/*-----TRANSLATION_DES_FONDS----*/
@@ -632,7 +632,7 @@ public Jeu(){
 	}
 
 
-	//TODO: boss!!!
+	//A FAIRE : boss!!!
 	if(this.phase==PHASESHOOT){
         /*-----APPARITION_ENNEMI-----*/
         randomApparition = r.nextInt(40)+1;
@@ -703,8 +703,8 @@ public Jeu(){
 		//PHASE COMBAT DE BOSS!!!
     }else{
         /*BOSS!!!*/
-        //TODO : barre de vie apparaissant (à la megaman) au spawn
-		//TODO : animation destruction (kablooie)
+		//A FAIRE : barre de vie apparaissant (à la megaman) au spawn
+		//A FAIRE : animation destruction (kablooie)
 
 		switch(this.phaseBoss){
 			case APPARITION:

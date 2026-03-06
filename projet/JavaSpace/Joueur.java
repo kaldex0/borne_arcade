@@ -15,7 +15,7 @@ class Joueur{
 
 
     /*-----Constructeur-----*/
-    public Joueur(){ // Défault
+    public Joueur(){ // Par défaut
 	tex=new Texture("./img/player/player1/3.png", new Point(0,0));
 	vie=0;
 	tempVie=0;
@@ -46,7 +46,7 @@ class Joueur{
     }
 
 
-    /*-----Get && Set-----*/
+    /*-----Accesseurs-----*/
     public Texture getTex(){
 	return tex;
     }

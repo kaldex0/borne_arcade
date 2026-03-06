@@ -3,10 +3,10 @@ import MG2D.geometrie.Texture;
 
 public class Dig implements Button {
 
-    /* Attributes */
+    /* Attributs */
     private boolean state = false;
 
-    /* Builders */
+    /* Constructeurs */
     public Dig() {
         this.state = false;
     }
@@ -15,22 +15,21 @@ public class Dig implements Button {
         this.state = state;
     }
 
-    /* Getters */
+    /* Accesseurs */
     public boolean getState() {
         return this.state;
     }
 
-    /* Setters */
+    /* Mutateurs */
     public void setState(boolean state) {
         this.state = state;
     }
 
-    /* Methods */
+    /* Methodes */
     @Override
     public void display() {
         /**
-         * If the button is activated, we display a "C" character, else we display a
-         * space
+         * Si le bouton est actif, on affiche un caractere "C", sinon un espace.
          */
         if (this.state) {
             System.out.print("C");
@@ -42,7 +41,7 @@ public class Dig implements Button {
     @Override
     public void actionButton(Tile c, Board board) {
         /**
-         * If the button is activated, we discover the tile
+         * Si le bouton est actif, on decouvre la case.
          */
         if (this.state) {
             c.discover(board);
@@ -52,7 +51,7 @@ public class Dig implements Button {
     @Override
     public Texture selection(int sizeTile, int width, int height) {
         /**
-         * We create a square with the color blue, the position and the size of the tile
+         * On cree un carre bleu a la position et taille de la case.
          */
         if (this.state) {
             return new Texture("./img/Minesweeper_questionmark_true.png",

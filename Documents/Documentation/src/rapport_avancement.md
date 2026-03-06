@@ -1,7 +1,5 @@
 # Rapport d'avancement SAE - Borne Arcade
 
-Genere le {{GENERATED_AT}}
-
 ## Objectifs et etat
 
 1) Automatiser la generation de la documentation
